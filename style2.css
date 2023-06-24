@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Lato', sans-serif;
+}
+.image img{
+    position: absolute;
+    width: 40%;
+    margin-top: 10vh;
+    image-rendering: optimizeSpeed;
+    
+    border-radius: 50%;
+    overflow: visible;
+    aspect-ratio: 1;
+    filter: brightness(0) saturate(90%);
+}
+.image img:hover{
+    filter: contrast(1);
+    transition: 0.5s;
+    /* background-color: rgba(255, 255, 255, 0.6); */
+}
+
+.image{
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+}

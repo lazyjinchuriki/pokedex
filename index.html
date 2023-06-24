@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <title>Pokedex</title>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="box">
+        <input type="checkbox" id="check">
+        <div class="search-box">
+          <input id="searchbar" onkeyup="search_pokemon()" type="text" placeholder="Search">
+          <label for="check" class="icon"><i class="fas fa-search"></i></label>
+        </div>
+      </div>
+    </div>
+    <div class="poke-container" id="poke-container">
+    </div>
+    <button id="scrollToTopBtn"><i class="fas fa-chevron-up"></i></i></button>
+
+    <!-- Design inspired by this Dribbble shot: https://dribbble.com/shots/5611109--Pokemon -->
+    <script src="script.js"></script>
+    <!-- <script src="new.js"></script> -->
+  </body>
+</html>
+
+
