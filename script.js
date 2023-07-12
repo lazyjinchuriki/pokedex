@@ -127,7 +127,8 @@ document.getElementById('scrollToTopBtn').addEventListener('click', function() {
 
 function search_pokemon() { 
     let input = document.getElementById('searchbar').value 
-    input=input.toLowerCase(); 
+    input=input.toLowerCase();
+    input=input.replace(/\s+/g, ''); // removing all spaces from search box
     // storing all card along wiith details in variable
     let x = document.getElementsByClassName('card'); 
       
@@ -138,8 +139,9 @@ function search_pokemon() {
         } 
          // checking  the name or type entered by user from search box if doesn't match than dont display the pokemon card 
         else { 
-            x[i].style.display="inline-block";                  
+            x[i].style.display="block";               
         }
+
     } 
 } 
 

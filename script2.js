@@ -22,8 +22,15 @@ const fetchPokemonDetails = async () => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data)
+  console.log(data);
   displayPokemonDetails(data);
+};
+const fetchPokemonSpecies = async () => {
+  const url = `https://pokeapi.co/api/v2/pokemon-species/${id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data);
+  displayPokemonSpecies(data);
 };
 
 const displayPokemonDetails = (pokemon) => {
@@ -37,10 +44,54 @@ const displayPokemonDetails = (pokemon) => {
 
   let pokemonDetailsEl = document.getElementById("pokemon-details");
   pokemonDetailsEl.innerHTML = `
-        <div class="image">
+        <div class="top">
         <img src="${imageSrc}" alt="${name}">
+        <span class="id">#${id}</span>
+        <div class="name">${name}</div>
+        <div class="type">Type: ${type}</div>
         </div>
+
+
       `;
 };
+const displayPokemonSpecies = (pokemon) => {
+  const overview1 = pokemon.flavor_text_entries[0].flavor_text.replace(
+    "\f",
+    " "
+  );
+  const overview2 = pokemon.flavor_text_entries[2].flavor_text.replace(
+    "\f",
+    " "
+  );
+  const overview3 = pokemon.flavor_text_entries[4].flavor_text.replace(
+    "\f",
+    " "
+  );
+  let tab1 = document.getElementById("tab_1");
+  tab1.innerHTML = `
+  <ul class="listWrapper">
+  <li class="listItem">${overview1}</li>
+  <li class="listItem">${overview2}</li>
+  <li class="listItem">${overview3}</li>
+  </ul>
+        
+
+`;
+};
+
+const tabs = document.querySelectorAll("[data-tab-value]");
+const tabInfos = document.querySelectorAll("[data-tab-info]");
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const target = document.querySelector(tab.dataset.tabValue);
+
+    tabInfos.forEach((tabInfo) => {
+      tabInfo.classList.remove("active");
+    });
+    target.classList.add("active");
+  });
+});
 
 fetchPokemonDetails();
+fetchPokemonSpecies();
