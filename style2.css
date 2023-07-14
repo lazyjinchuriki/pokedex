@@ -6,18 +6,27 @@
 body{
     font-family: 'Lato', sans-serif;
 }
+.image {
+    position: relative;
+}
 .top img{
     display: block;
-    /* background-color: rgba(255, 245, 238, 0.633); 
-    border-radius: 50%; */
-    /* overflow: visible; */
     margin-left: auto;
     margin-right: auto;
     margin-top: 10vh;
-    min-width: 35%;
-    max-width: 50%;
+    width: 40vh;
     aspect-ratio: 1/1;
     z-index: 10;
+    object-fit: contain;
+}
+.circle{
+        position: absolute;
+        width: 40vh;
+        height: 40vh;
+        background-color: #ffffff7d;
+        border-radius: 50%;
+        top: 7%;
+        z-index: -1;
 }
 
 /* .image img:hover{
@@ -31,6 +40,10 @@ body{
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    /* background-color: white;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px; */
+    
 
 }
 
@@ -87,10 +100,10 @@ body{
 
 .tabs span:hover {
     cursor: pointer;
-    font-weight: bold;
-    text-decoration: underline;
-    text-underline-offset: 0.3em;
-    text-decoration-thickness: 0.125em;
+        font-weight: bold;
+            text-decoration: underline;
+            text-underline-offset: 0.3em;
+            text-decoration-thickness: 0.125em;
 }
 
 .listWrapper{
@@ -114,26 +127,38 @@ body{
 .stats{
     display: flex;
     flex-direction: column;
-    align-items: start;
-    font-size: 1.5em;
+    align-items: center;
+    font-size: 1.2em;
     font-weight: bold;
-    padding: 1.5rem;
+    margin-top: 30px;
 }
-.stats progress{
-    width: 100%;
-    height: 2em;
-    margin-bottom: 10px;
+.stats .stat{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
 }
-.stats #hp{
-    accent-color: rgb(0, 251, 0);
+.stats meter{
+    width: 85%;
+    height: 2.5rem;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    position: relative;
 }
-.stats #attack {
-    accent-color: rgb(255, 74, 74);
+meter::-webkit-meter-optimum-value{
+    background-color: #3dfd64;
+    -webkit-transition: width .5s;
 }
-.stats #defense {
-    accent-color: rgb(255, 255, 94);
+meter::-webkit-meter-suboptimum-value{
+    background-color: #ffb700;
+}
+meter::-webkit-meter-even-less-good-value{
+    background-color: #ff0000;
+}
+.stats meter::-webkit-meter-bar{
+    background-color: rgba(255, 255, 255, 0.529);
+    border: none;
+}
 
-}
-.stats #speed {
-    accent-color: rgb(61, 158, 255);
-}

@@ -2,9 +2,9 @@ const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get("id"));
 console.log(id);
 const colors = {
-  fire: "#FF4433",
+  fire: "#ff4d4d",
   grass: "#50C878",
-  electric: "#F4C430",
+  electric: "#FFEA00",
   water: "#4169E1",
   ground: "#967969",
   rock: "#71797E",
@@ -40,33 +40,127 @@ const displayPokemonDetails = (pokemon) => {
   const poke_types = pokemon.types.map((type) => type.type.name);
   const type = pokemon.types[0].type.name;
   const color = colors[type];
+
   const hp = pokemon.stats[0].base_stat;
   const maxHp = hp * 2 + 204;
   const minHp = hp * 2 + 110;
-  const avgHp = (maxHp + minHp) / 2;
   const attack = pokemon.stats[1].base_stat;
-  const maxAttack = (attack * 2 + 99) * 1.1;
-  const minAttack = (attack * 2 + 5) * 0.9;
+  const maxAttack = Math.floor((attack * 2 + 99) * 1.1);
+  const minAttack = Math.floor((attack * 2 + 5) * 0.9);
+  const spAttack = Math.floor(pokemon.stats[3].base_stat);
+  const maxSpAttack = Math.floor((spAttack * 2 + 99) * 1.1);
+  const minSpAttack = Math.floor((spAttack * 2 + 5) * 0.9);
+  const spDefense = Math.floor(pokemon.stats[4].base_stat);
+  const maxSpDefense = Math.floor((spDefense * 2 + 99) * 1.1);
+  const minSpDefense = Math.floor((spDefense * 2 + 5) * 0.9);
   const defense = pokemon.stats[2].base_stat;
-  const maxDefense = (defense * 2 + 99) * 1.1;
-  const minDefense = (defense * 2 + 5) * 0.9;
+  const maxDefense = Math.floor((defense * 2 + 99) * 1.1);
+  const minDefense = Math.floor((defense * 2 + 5) * 0.9);
   const speed = pokemon.stats[5].base_stat;
-  const maxSpeed = (speed * 2 + 99) * 1.1;
-  const minSpeed = (speed * 2 + 5) * 0.9;
+  const maxSpeed = Math.floor((speed * 2 + 99) * 1.1);
+  const minSpeed = Math.floor((speed * 2 + 5) * 0.9);
 
   document.body.style.backgroundColor = color;
+
   let tab2 = document.getElementById("tab_2");
   tab2.innerHTML = `
   <div class="stats">
-  <label for="hp">HP:</label>
-<progress id="hp" value="${hp}" max="${minHp}"> ${hp} </progress>
-<label for="attack">Attack:</label>
-<progress id="attack" value="${attack}" max="${minAttack}"> ${attack} </progress>
-<label for="defense">Defense:</label>
-<progress id="defense" value="${defense}" max="${minDefense}"> ${defense} </progress>
-<label for="speed">Speed:</label>
-<progress id="speed" value="${speed}" max="${minSpeed}"> ${speed} </progress>
-</div>
+
+  <div class="stat" style="width:83%; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+  <div>STATS</div>
+
+  <div> 
+  MIN-MAX
+  </div>
+  </div>
+  <br>
+
+
+  <div class="stat">
+  <div> HP: ${hp} </div>
+
+  <div> 
+  ${minHp} - ${maxHp}
+  </div>
+  </div>
+
+  <meter id="hp"
+    style="content: 'HP';"
+       min="0" max="255"
+       low="80" high="150" optimum="200"
+       value="${hp}">
+  </meter>
+
+    <div class="stat">
+  <div> Attack: ${attack} </div>
+
+  <div> 
+  ${minAttack} - ${maxAttack}
+  </div>
+  </div>
+
+  <meter id="attack"
+        min="0" max="255"
+        low="80" high="150" optimum="200"
+        value="${attack}">
+  </meter>
+
+    <div class="stat">
+  <div> Defense: ${defense} </div>
+
+  <div> 
+  ${minDefense} - ${maxDefense}
+  </div>
+  </div>
+
+  <meter id="defense"
+        min="0" max="255"
+        low="80" high="150" optimum="200"
+        value="${defense}">
+  </meter>
+
+      <div class="stat">
+  <div> Sp. Attack: ${spAttack} </div>
+
+  <div> 
+  ${minSpAttack} - ${maxSpAttack}
+  </div>
+  </div>
+
+  <meter id="spattack"
+        min="0" max="255"
+        low="80" high="150" optimum="200"
+        value="${spAttack}">
+  </meter>
+
+      <div class="stat">
+  <div> Sp. Defense: ${spDefense} </div>
+
+  <div> 
+  ${minSpDefense} - ${maxSpDefense}
+  </div>
+  </div>
+
+  <meter id="spdefense"
+        min="0" max="255"
+        low="80" high="150" optimum="200"
+        value="${spDefense}">
+  </meter>
+
+    <div class="stat">
+  <div> Speed: ${speed} </div>
+
+  <div> 
+  ${minSpeed} - ${maxSpeed}
+  </div>
+  </div>
+
+  <meter id="speed"
+        min="0" max="255"
+        low="80" high="150" optimum="200"
+        value="${speed}">
+  </meter>
+  </div>
 
 
 
@@ -74,7 +168,10 @@ const displayPokemonDetails = (pokemon) => {
   let pokemonDetailsEl = document.getElementById("pokemon-details");
   pokemonDetailsEl.innerHTML = `
         <div class="top">
+        <div class="image">
         <img src="${imageSrc}" alt="${name}">
+        <div class="circle"></div>
+        </div>
         <span class="id">#${id}</span>
         <div class="name">${name}</div>
         <div class="type">Type: ${type}</div>
@@ -116,6 +213,7 @@ tabs.forEach((tab) => {
       tabInfo.classList.remove("active");
     });
     target.classList.add("active");
+    target.scrollIntoView({ behavior: "smooth" });
   });
 });
 
