@@ -44,7 +44,7 @@ h1 {
   align-items: center;
   text-align: center;
   transform-style: preserve-3d;
-  transition: all 0.75s ease-in-out;
+  transition: all 0.25s ease-in-out;
   min-width: 200px;
   perspective: 1000px;
 }

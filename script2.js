@@ -40,8 +40,37 @@ const displayPokemonDetails = (pokemon) => {
   const poke_types = pokemon.types.map((type) => type.type.name);
   const type = pokemon.types[0].type.name;
   const color = colors[type];
-  document.body.style.backgroundColor = color;
+  const hp = pokemon.stats[0].base_stat;
+  const maxHp = hp * 2 + 204;
+  const minHp = hp * 2 + 110;
+  const avgHp = (maxHp + minHp) / 2;
+  const attack = pokemon.stats[1].base_stat;
+  const maxAttack = (attack * 2 + 99) * 1.1;
+  const minAttack = (attack * 2 + 5) * 0.9;
+  const defense = pokemon.stats[2].base_stat;
+  const maxDefense = (defense * 2 + 99) * 1.1;
+  const minDefense = (defense * 2 + 5) * 0.9;
+  const speed = pokemon.stats[5].base_stat;
+  const maxSpeed = (speed * 2 + 99) * 1.1;
+  const minSpeed = (speed * 2 + 5) * 0.9;
 
+  document.body.style.backgroundColor = color;
+  let tab2 = document.getElementById("tab_2");
+  tab2.innerHTML = `
+  <div class="stats">
+  <label for="hp">HP:</label>
+<progress id="hp" value="${hp}" max="${minHp}"> ${hp} </progress>
+<label for="attack">Attack:</label>
+<progress id="attack" value="${attack}" max="${minAttack}"> ${attack} </progress>
+<label for="defense">Defense:</label>
+<progress id="defense" value="${defense}" max="${minDefense}"> ${defense} </progress>
+<label for="speed">Speed:</label>
+<progress id="speed" value="${speed}" max="${minSpeed}"> ${speed} </progress>
+</div>
+
+
+
+  `;
   let pokemonDetailsEl = document.getElementById("pokemon-details");
   pokemonDetailsEl.innerHTML = `
         <div class="top">
@@ -50,7 +79,6 @@ const displayPokemonDetails = (pokemon) => {
         <div class="name">${name}</div>
         <div class="type">Type: ${type}</div>
         </div>
-
 
       `;
 };
@@ -69,11 +97,9 @@ const displayPokemonSpecies = (pokemon) => {
   );
   let tab1 = document.getElementById("tab_1");
   tab1.innerHTML = `
-  <ul class="listWrapper">
-  <li class="listItem">${overview1}</li>
-  <li class="listItem">${overview2}</li>
-  <li class="listItem">${overview3}</li>
-  </ul>
+  <div class="listWrapper">
+  <p class="listItem"> " ${overview1} ${overview2} ${overview3} "</p>
+  </div>
         
 
 `;
