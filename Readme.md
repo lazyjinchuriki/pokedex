@@ -11,9 +11,6 @@ Pokedex offers the following features:
 - Get detailed information about a specific Pokemon, including its types, abilities, stats, and evolutions
 - View a list of all Pokemon and browse through them
 - Filter Pokemon based on their types
-- View popular Pokemon and their rankings
-- View top-rated Pokemon based on their stats
-- Explore Pokemon evolutions and their evolutionary paths
 
 ## Installation
 
