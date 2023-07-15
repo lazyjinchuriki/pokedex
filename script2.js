@@ -2,21 +2,26 @@ const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get("id"));
 console.log(id);
 const colors = {
-  fire: "#ff4d4d",
   grass: "#50C878",
-  electric: "#FFEA00",
-  water: "#4169E1",
-  ground: "#967969",
-  rock: "#71797E",
-  fairy: "#FFB6C1",
-  poison: "#d23988",
-  bug: "#FF7F50",
-  dragon: "#FFAA33",
-  psychic: "#DA70D6",
-  flying: "#A7C7E7",
-  fighting: "#FF3131",
-  normal: "#EDEADE",
+  electric: "#fad343",
+  water: "#1E90FF",
+  ground: "#735139",
+  rock: "#63594f",
+  fairy: "#EE99AC",
+  poison: "#b34fb3",
+  bug: "#A8B820",
+  dragon: "#fc883a",
+  psychic: "#882eff",
+  flying: "#87CEEB",
+  fighting: "#bf5858",
+  normal: "#D2B48C",
+  ghost: "#7B62A3",
+  dark: "#414063",
+  steel: "#808080",
+  ice: "#98D8D8",
+  fire: "#e03a3a",
 };
+const main_types = Object.keys(colors);
 
 const fetchPokemonDetails = async () => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
@@ -38,7 +43,7 @@ const displayPokemonDetails = (pokemon) => {
   const id = pokemon.id.toString().padStart(3, "0");
   const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
   const poke_types = pokemon.types.map((type) => type.type.name);
-  const type = pokemon.types[0].type.name;
+  const type = main_types.find((type) => poke_types.indexOf(type) > -1);
   const color = colors[type];
 
   const hp = pokemon.stats[0].base_stat;
@@ -60,106 +65,104 @@ const displayPokemonDetails = (pokemon) => {
   const maxSpeed = Math.floor((speed * 2 + 99) * 1.1);
   const minSpeed = Math.floor((speed * 2 + 5) * 0.9);
 
+  const abilities = pokemon.abilities.map((ability) => ability.ability.name);
+  const moves = pokemon.moves.map((move) => move.move.name);
+
   document.body.style.backgroundColor = color;
+
+  let tab3 = document.getElementById("tab_3");
+  tab3.innerHTML = `
+  <div class="abilities">
+  <h1>Abilities</h1>
+  ${abilities
+    .map((ability) => `<div class="ability">${ability}</div>`)
+    .join("")}
+  </div>
+  <br>
+  <h1>Moves</h1>
+  ${moves.map((move) => `<div class="move">${move}</div>`).join("")}
+  
+  `;
 
   let tab2 = document.getElementById("tab_2");
   tab2.innerHTML = `
   <div class="stats">
-
-  <div class="stat" style="width:83%; font-family: Verdana, Geneva, Tahoma, sans-serif;">
-  <div>STATS</div>
-
-  <div> 
-  MIN-MAX
-  </div>
-  </div>
-  <br>
-
-
   <div class="stat">
-  <div> HP: ${hp} </div>
-
-  <div> 
-  ${minHp} - ${maxHp}
-  </div>
-  </div>
-
-  <meter id="hp"
+  <div> Health:</div>
+    <meter id="hp"
     style="content: 'HP';"
        min="0" max="255"
        low="80" high="150" optimum="200"
        value="${hp}">
   </meter>
 
+  </div>
+
+
+
     <div class="stat">
-  <div> Attack: ${attack} </div>
+  <div> Attack:</div>
 
-  <div> 
-  ${minAttack} - ${maxAttack}
-  </div>
-  </div>
-
-  <meter id="attack"
+    <meter id="attack"
         min="0" max="255"
         low="80" high="150" optimum="200"
         value="${attack}">
   </meter>
 
+
+  </div>
+
+
     <div class="stat">
-  <div> Defense: ${defense} </div>
-
-  <div> 
-  ${minDefense} - ${maxDefense}
-  </div>
-  </div>
-
-  <meter id="defense"
+  <div> Defense:</div>
+    <meter id="defense"
         min="0" max="255"
         low="80" high="150" optimum="200"
         value="${defense}">
   </meter>
 
+
+  </div>
+
+
+
       <div class="stat">
-  <div> Sp. Attack: ${spAttack} </div>
-
-  <div> 
-  ${minSpAttack} - ${maxSpAttack}
-  </div>
-  </div>
-
-  <meter id="spattack"
+  <div> Sp. Attack:</div>
+    <meter id="spattack"
         min="0" max="255"
         low="80" high="150" optimum="200"
         value="${spAttack}">
   </meter>
 
+
+  </div>
+
+
+
       <div class="stat">
-  <div> Sp. Defense: ${spDefense} </div>
-
-  <div> 
-  ${minSpDefense} - ${maxSpDefense}
-  </div>
-  </div>
-
-  <meter id="spdefense"
+  <div> Sp. Defense:</div>
+    <meter id="spdefense"
         min="0" max="255"
         low="80" high="150" optimum="200"
         value="${spDefense}">
   </meter>
 
+
+  </div>
+
+
+
     <div class="stat">
-  <div> Speed: ${speed} </div>
-
-  <div> 
-  ${minSpeed} - ${maxSpeed}
-  </div>
-  </div>
-
-  <meter id="speed"
+  <div> Speed:</div>
+    <meter id="speed"
         min="0" max="255"
         low="80" high="150" optimum="200"
         value="${speed}">
   </meter>
+
+
+  </div>
+
   </div>
 
 
@@ -174,7 +177,7 @@ const displayPokemonDetails = (pokemon) => {
         </div>
         <span class="id">#${id}</span>
         <div class="name">${name}</div>
-        <div class="type">Type: ${type}</div>
+        <div class="type">${poke_types}</div>
         </div>
 
       `;

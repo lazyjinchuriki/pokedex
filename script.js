@@ -1,20 +1,24 @@
 const poke_container = document.getElementById("poke-container");
-const pokemon_count = 151;
+const pokemon_count = 500;
 const colors = {
-  fire: "#FF4433",
+  fire: "#e03a3a",
   grass: "#50C878",
-  electric: "#F4C430",
-  water: "#4169E1",
-  ground: "#967969",
-  rock: "#71797E",
-  fairy: "#FFB6C1",
-  poison: "#d23988",
-  bug: "#FF7F50",
-  dragon: "#FFAA33",
-  psychic: "#DA70D6",
-  flying: "#A7C7E7",
-  fighting: "#FF3131",
-  normal: "#EDEADE",
+  electric: "#fad343",
+  water: "#1E90FF",
+  ground: "#735139",
+  rock: "#63594f",
+  fairy: "#EE99AC",
+  poison: "#b34fb3",
+  bug: "#A8B820",
+  dragon: "#fc883a",
+  psychic: "#882eff",
+  flying: "#87CEEB",
+  fighting: "#bf5858",
+  normal: "#D2B48C",
+  ghost: "#7B62A3",
+  dark: "#414063",
+  steel: "#808080",
+  ice: "#98D8D8",
 };
 
 const main_types = Object.keys(colors);
@@ -52,8 +56,7 @@ const createPokemonCard = (pokemon) => {
 
   let weight = pokemon.weight / 10 + "kg";
   let height = pokemon.height / 10 + "m";
-  // const attack = pokemon.stats[1].base_stat
-  // const defense = pokemon.stats[2].base_stat
+
   const poke_types = pokemon.types.map((type) => type.type.name);
   const type = main_types.find((type) => poke_types.indexOf(type) > -1);
   const color = colors[type];
