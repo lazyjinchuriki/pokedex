@@ -4,6 +4,27 @@
   box-sizing: border-box;
 }
 
+:root {
+  --grass: #5FBD58;
+  --bug: #92BC2C;
+  --dark: #595761;
+  --dragon: #0C69C8;
+  --electric: #F2D94E;
+  --fairy: #EE90E6;
+  --fighting: #D3425F;
+  --fire: #dc872f;
+  --flying: #A1BBEC;
+  --ghost: #5F6DBC;
+  --ground: #DA7C4D;
+  --ice: #75D0C1;
+  --normal: #A0A29F;
+  --poison: #B763CF;
+  --psychic: #ff2ca8;
+  --rock: #a38c21;
+  --steel: #5695A3;
+  --water: #539DDF;
+}
+
 body {
   background: #efefbb;
   /* background: linear-gradient(to right, #ffffff, #827eff); */
@@ -227,4 +248,111 @@ h1 {
 }
 #check{
   display: none;
+}
+
+
+.poke__type__bg>img {
+  width: 20px;
+  height: 20px;
+}
+
+.poke__type__bg {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.grass {
+  background: var(--grass);
+  /* box-shadow: 0 0 20px var(--grass); */
+}
+
+.bug {
+  background: var(--bug);
+  /* box-shadow: 0 0 20px var(--bug); */
+}
+
+.dark {
+  background: var(--dark);
+  /* box-shadow: 0 0 20px var(--dark); */
+}
+
+.dragon {
+  background: var(--dragon);
+  /* box-shadow: 0 0 20px var(--dragon); */
+}
+
+.electric {
+  background: var(--electric);
+  /* box-shadow: 0 0 20px #796d26; */
+}
+
+.fairy {
+  background: var(--fairy);
+  /* box-shadow: 0 0 20px var(--fairy); */
+}
+
+.fighting {
+  background: var(--fighting);
+  /* box-shadow: 0 0 20px var(--fighting); */
+}
+
+.flying {
+  background: var(--flying);
+  /* box-shadow: 0 0 20px var(--flying); */
+}
+
+.ghost {
+  background: var(--ghost);
+  /* box-shadow: 0 0 20px var(--ghost); */
+}
+
+.ground {
+  background: var(--ground);
+  /* box-shadow: 0 0 20px var(--ground); */
+}
+
+.ice {
+  background: var(--ice);
+  /* box-shadow: 0 0 20px var(--ice); */
+}
+
+.normal {
+  background: var(--normal);
+  /* box-shadow: 0 0 20px var(--normal); */
+}
+
+.poison {
+  background: var(--poison);
+  /* box-shadow: 0 0 20px var(--poison); */
+}
+
+.psychic {
+  background: var(--psychic);
+  /* box-shadow: 0 0 20px var(--psychic); */
+}
+
+.rock {
+  background: var(--rock);
+  /* box-shadow: 0 0 20px var(--rock); */
+}
+
+.steel {
+  background: var(--steel);
+  /* box-shadow: 0 0 20px var(--steel); */
+}
+
+.water {
+  background: var(--water);
+  /* box-shadow: 0 0 20px var(--water); */
+}
+
+.fire {
+  background: var(--fire);
+  /* box-shadow: 0 0 20px var(--fire); */
 }
