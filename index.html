@@ -11,15 +11,39 @@
   <body>
     <div class="nav">
       <div class="box">
-        <input type="checkbox" id="check">
-        <div class="search-box">
-          <input id="searchbar" onkeyup="search_pokemon()" type="text" placeholder="Search">
-          <label for="check" class="icon"><i class="fas fa-search"></i></label>
-        </div>
+        <input id="searchbar" onkeyup="search_pokemon()" type="text" placeholder="Search">
       </div>
     </div>
+    <div class="regionTabs">
+      <div class="tab active" onclick="fetchKanto()">
+        Kanto
+      </div>
+      <div class="tab" onclick="fetchJohto()">
+        <p>Johto</p>
+      </div>
+      <div class="tab" onclick="fetchHoenn()">
+        <p>Hoenn</p>
+      </div>
+      <div class="tab" onclick="fetchSinnoh()">
+        <p>Sinnoh</p>
+      </div>
+      <div class="tab" onclick="fetchUnova()">
+        <p>Unova</p>
+      </div>
+      <div class="tab" onclick="fetchKalos()">
+        <p>Kalos</p>
+      </div>
+      <div class="tab" onclick="fetchAlola()">
+        <p>Alola</p>
+      </div>
+      <div class="tab" onclick="fetchGalar()">
+        <p>Galar</p>
+      </div>
+    </div>
+
     <div class="poke-container" id="poke-container">
     </div>
+
     <button id="scrollToTopBtn"><i class="fas fa-chevron-up"></i></i></button>
 
     <!-- Design inspired by this Dribbble shot: https://dribbble.com/shots/5611109--Pokemon -->
