@@ -2,6 +2,7 @@ const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get("id"));
 console.log(id);
 const colors = {
+  fire: "#e03a3a",
   grass: "#50C878",
   electric: "#fad343",
   water: "#1E90FF",
@@ -19,7 +20,6 @@ const colors = {
   dark: "#414063",
   steel: "#808080",
   ice: "#98D8D8",
-  fire: "#e03a3a",
 };
 const main_types = Object.keys(colors);
 
@@ -74,13 +74,15 @@ const displayPokemonDetails = (pokemon) => {
   tab3.innerHTML = `
   <div class="abilities">
   <h1>Abilities</h1>
-  ${abilities
-    .map((ability) => `<div class="ability">${ability}</div>`)
-    .join("")}
+  <div class="ability">
+  ${abilities.map((ability) => `<div>${ability}</div>`).join("")}
+  </div>
   </div>
   <br>
   <h1>Moves</h1>
+  <div class="moves">
   ${moves.map((move) => `<div class="move">${move}</div>`).join("")}
+  </div>
   
   `;
 
@@ -95,10 +97,8 @@ const displayPokemonDetails = (pokemon) => {
        low="80" high="150" optimum="200"
        value="${hp}">
   </meter>
-
   </div>
-
-
+  <hr>
 
     <div class="stat">
   <div> Attack:</div>
@@ -108,9 +108,8 @@ const displayPokemonDetails = (pokemon) => {
         low="80" high="150" optimum="200"
         value="${attack}">
   </meter>
-
-
   </div>
+  <hr>
 
 
     <div class="stat">
@@ -123,7 +122,7 @@ const displayPokemonDetails = (pokemon) => {
 
 
   </div>
-
+<hr>
 
 
       <div class="stat">
@@ -136,8 +135,7 @@ const displayPokemonDetails = (pokemon) => {
 
 
   </div>
-
-
+<hr>
 
       <div class="stat">
   <div> Sp. Defense:</div>
@@ -149,7 +147,7 @@ const displayPokemonDetails = (pokemon) => {
 
 
   </div>
-
+<hr>
 
 
     <div class="stat">
@@ -159,10 +157,8 @@ const displayPokemonDetails = (pokemon) => {
         low="80" high="150" optimum="200"
         value="${speed}">
   </meter>
-
-
   </div>
-
+  <hr>
   </div>
 
 
@@ -177,7 +173,10 @@ const displayPokemonDetails = (pokemon) => {
         </div>
         <span class="id">#${id}</span>
         <div class="name">${name}</div>
-        <div class="type">${poke_types}</div>
+        <div class="poke__type__bg ${type}">
+        <img src="Icons/${type}.svg" alt="Type"></div>
+        </div>
+        </div>
         </div>
 
       `;

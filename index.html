@@ -14,32 +14,22 @@
         <input id="searchbar" onkeyup="search_pokemon()" type="text" placeholder="Search">
       </div>
     </div>
-    <div class="regionTabs">
-      <div class="tab active" onclick="fetchKanto()">
-        Kanto
-      </div>
-      <div class="tab" onclick="fetchJohto()">
-        <p>Johto</p>
-      </div>
-      <div class="tab" onclick="fetchHoenn()">
-        <p>Hoenn</p>
-      </div>
-      <div class="tab" onclick="fetchSinnoh()">
-        <p>Sinnoh</p>
-      </div>
-      <div class="tab" onclick="fetchUnova()">
-        <p>Unova</p>
-      </div>
-      <div class="tab" onclick="fetchKalos()">
-        <p>Kalos</p>
-      </div>
-      <div class="tab" onclick="fetchAlola()">
-        <p>Alola</p>
-      </div>
-      <div class="tab" onclick="fetchGalar()">
-        <p>Galar</p>
-      </div>
-    </div>
+  <div class="select-wrapper">
+    <select id="regionSelect" onchange="changeRegion()">
+      <option value="kanto">Kanto</option>
+      <option value="johto">Johto</option>
+      <option value="hoenn">Hoenn</option>
+      <option value="sinnoh">Sinnoh</option>
+      <option value="unova">Unova</option>
+      <option value="kalos">Kalos</option>
+      <option value="alola">Alola</option>
+      <option value="galar">Galar</option>
+      <option value="hisui">Hisui</option>
+      <option value="paldea">Paldea</option>
+
+      <!-- Add more options for other regions -->
+    </select>
+  </div>
 
     <div class="poke-container" id="poke-container">
     </div>

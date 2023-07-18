@@ -78,9 +78,12 @@ h1 {
   text-align: center;
   transform-style: preserve-3d;
   transition: all 0.25s ease-in-out;
-  min-width: 200px;
-  perspective: 1000px;
+  min-width: 210px;
+  max-width: 210px;
+  min-height: 350px;
+  max-height: 350px;
   color: #202020;
+  perspective: 1000px;
 }
 
 
@@ -115,6 +118,9 @@ h1 {
 
 .card:hover {
   transform: rotateY(180deg);
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+
 }
 
 .card .front-image {
@@ -176,7 +182,11 @@ h1 {
   margin: 15px 0 7px;
   letter-spacing: 5px;
   font-family: 'pocketMonk', sans-serif;
-  font-size: 1.5em;
+  font-size: 1.45em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+
 }
 .type {
   text-transform: uppercase;
@@ -220,6 +230,7 @@ h1 {
   margin: 10px;
   height: auto;
   width: 100%;
+  z-index: 100;
 }
 
 .box input{
@@ -348,31 +359,52 @@ h1 {
   /* box-shadow: 0 0 20px var(--fire); */
 }
 
-.regionTabs {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-family: sans-serif;
-  font-size: 1.2em;
+/* Dropdown Styles */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.select-wrapper::after {
+  content: '\25BC';
+  /* Unicode down arrow */
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  pointer-events: none;
+}
+
+select {
+  padding: 8px 30px 8px 10px;
+  font-size: 14px;
   font-weight: bold;
-  padding: 10px;
-  margin: 10px;
-  overflow: scroll;
-}
-.regionTabs .active {
-  color: #202020;
-  border-radius: 50px solid #202020;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  appearance: none;
+  outline: none;
 }
 
-.tab {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Dropdown Styles - Customization to match your existing styles */
+.select-wrapper {
+  margin: 10px 0;
+  padding: 0 20px;
 }
 
+select {
+  width: 150px;
 
-.tab p {
-  margin-top: 5px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Optional - Additional styles for the options */
+option {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  font-size: 14px;
   font-weight: bold;
+
 }

@@ -1,11 +1,44 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
 
+@font-face {
+    font-family: pocketMonk;
+    src: url(./Fonts/PocketMonk.ttf);
+}
+
+@font-face {
+    font-family: slumbersWeight;
+    src: url(./Fonts/SlumbersWeight.ttf);
+}
+
+@font-face {
+    font-family: moltors;
+    src: url(./Fonts/Moltors.ttf);
+}
+
 * {
     box-sizing: border-box;
 }
-body{
-    font-family: 'Lato', sans-serif;
+:root {
+    --grass: #5FBD58;
+    --bug: #92BC2C;
+    --dark: #595761;
+    --dragon: #0C69C8;
+    --electric: #F2D94E;
+    --fairy: #EE90E6;
+    --fighting: #D3425F;
+    --fire: #dc872f;
+    --flying: #A1BBEC;
+    --ghost: #5F6DBC;
+    --ground: #DA7C4D;
+    --ice: #75D0C1;
+    --normal: #A0A29F;
+    --poison: #B763CF;
+    --psychic: #ff2ca8;
+    --rock: #a38c21;
+    --steel: #5695A3;
+    --water: #539DDF;
 }
+
 .image {
     position: relative;
 }
@@ -39,7 +72,6 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
     /* background-color: white;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px; */
@@ -54,17 +86,16 @@ body{
         font-size: 1.5em;
         font-weight: 550;
         margin-top: 25px;
+        font-family: 'moltors', sans-serif;
     }
 .top .name{
     font-size: 2.5em;
     font-weight: 800;
-    letter-spacing: 1px;
-}
-.top .type{
-    font-size: 1.25em;
-    font-weight: 560;
-    text-transform: capitalize;
-    margin-bottom: 20px;
+    letter-spacing: 5px;
+    font-family: 'pocketMonk', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 5px;
+
 }
 
 
@@ -90,8 +121,12 @@ body{
     justify-content:space-evenly;
     color: black;
     font-weight: bold;
+    font-family: 'pocketMonk', sans-serif;
+    letter-spacing: 5px;
     display: flex;
-    margin: 0;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
 }
 
 .tabs span {
@@ -100,10 +135,10 @@ body{
 
 .tabs span:hover {
     cursor: pointer;
-        font-weight: bold;
-            text-decoration: underline;
-            text-underline-offset: 0.3em;
-            text-decoration-thickness: 0.125em;
+    font-weight: bold;
+    text-decoration: underline;
+     text-underline-offset: 0.3em;
+    text-decoration-thickness: 0.15em;
 }
 
 .listWrapper{
@@ -127,9 +162,15 @@ body{
 .stats{
     display: flex;
     flex-direction: column;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-top: 10px;
+    font-size: 0.8em;
+    font-family: 'moltors', sans-serif;
+}
+.stats hr{
+    width: 100%;
+    margin: 5px, 10px;
+    padding: 5px, 10px;
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.37);
 }
 .stats .stat{
     display: flex;
@@ -141,16 +182,18 @@ body{
 }
 .stat div{
     text-align: left;
+    margin-top: 5px;
     width: 30%;
 }
 .stats meter{
     width: 65%;
-    height: 2rem;
+    height: 2em;
     margin: 5px, 10px;
     padding: 5px, 10px;
     border-radius: 10px;
     border: none;
     position: relative;
+
 }
 meter::-webkit-meter-optimum-value{
     background-color: #3dfd64;
@@ -166,3 +209,127 @@ meter::-webkit-meter-even-less-good-value{
     border: none;
 }
 
+.poke__type__bg img {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    overflow: visible;
+    border-radius: 100%;
+
+}
+
+.poke__type__bg {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+.grass {
+    background: var(--grass);
+    /* box-shadow: 0 0 20px var(--grass); */
+}
+
+.bug {
+    background: var(--bug);
+    /* box-shadow: 0 0 20px var(--bug); */
+}
+
+.dark {
+    background: var(--dark);
+    /* box-shadow: 0 0 20px var(--dark); */
+}
+
+.dragon {
+    background: var(--dragon);
+    /* box-shadow: 0 0 20px var(--dragon); */
+}
+
+.electric {
+    background: var(--electric);
+    /* box-shadow: 0 0 20px #796d26; */
+}
+
+.fairy {
+    background: var(--fairy);
+    /* box-shadow: 0 0 20px var(--fairy); */
+}
+
+.fighting {
+    background: var(--fighting);
+    /* box-shadow: 0 0 20px var(--fighting); */
+}
+
+.flying {
+    background: var(--flying);
+    /* box-shadow: 0 0 20px var(--flying); */
+}
+
+.ghost {
+    background: var(--ghost);
+    /* box-shadow: 0 0 20px var(--ghost); */
+}
+
+.ground {
+    background: var(--ground);
+    /* box-shadow: 0 0 20px var(--ground); */
+}
+
+.ice {
+    background: var(--ice);
+    /* box-shadow: 0 0 20px var(--ice); */
+}
+
+.normal {
+    background: var(--normal);
+    /* box-shadow: 0 0 20px var(--normal); */
+}
+
+.poison {
+    background: var(--poison);
+    /* box-shadow: 0 0 20px var(--poison); */
+}
+
+.psychic {
+    background: var(--psychic);
+    /* box-shadow: 0 0 20px var(--psychic); */
+}
+
+.rock {
+    background: var(--rock);
+    /* box-shadow: 0 0 20px var(--rock); */
+}
+
+.steel {
+    background: var(--steel);
+    /* box-shadow: 0 0 20px var(--steel); */
+}
+
+.water {
+    background: var(--water);
+    /* box-shadow: 0 0 20px var(--water); */
+}
+
+.fire {
+    background: var(--fire);
+    /* box-shadow: 0 0 20px var(--fire); */
+}
+
+.ability, .moves{
+    display: flex;
+    align-items: center;
+
+    flex-wrap: wrap;
+    margin-top: 20px;
+    font-size: 1.25em;
+    font-style: oblique;
+    font-weight: 600;
+    font-family: 'moltors', sans-serif;
+    letter-spacing: 5px;
+}
+
+.ability div, .moves div{
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+}

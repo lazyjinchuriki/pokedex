@@ -1,5 +1,5 @@
 const poke_container = document.getElementById("poke-container");
-const pokemon_count = 500;
+const pokemon_count = 1010;
 const colors = {
   fire: "#e03a3a",
   grass: "#50C878",
@@ -20,22 +20,78 @@ const colors = {
   steel: "#808080",
   ice: "#98D8D8",
 };
+const regions = {
+  kanto: {
+    start: 1,
+    end: 151,
+  },
+  johto: {
+    start: 152,
+    end: 251,
+  },
+  hoenn: {
+    start: 252,
+    end: 386,
+  },
+  sinnoh: {
+    start: 387,
+    end: 493,
+  },
+  unova: {
+    start: 494,
+    end: 649,
+  },
+  kalos: {
+    start: 650,
+    end: 721,
+  },
+  alola: {
+    start: 722,
+    end: 809,
+  },
+  galar: {
+    start: 810,
+    end: 898,
+  },
+  hisui: {
+    start: 899,
+    end: 905,
+  },
+  paldea: {
+    start: 906,
+    end: 1010,
+  },
+};
+
+const fetchPokemons = async (region) => {
+  const { start, end } = regions[region];
+  for (let i = start; i <= end; i++) {
+    const pokemonName = i.toString();
+    await getPokemon(pokemonName);
+  }
+};
+const getPokemon = async (name) => {
+  const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  createPokemonCard(data);
+};
 
 const main_types = Object.keys(colors);
 
-const fetchPokemons = async () => {
-  for (let i = 1; i <= pokemon_count; i++) {
-    await getPokemon(i);
-  }
-};
+// const fetchPokemons = async () => {
+//   for (let i = 1; i <= pokemon_count; i++) {
+//     await getPokemon(i);
+//   }
+// };
 
-const getPokemon = async (id) => {
-  const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  console.log(data);
-  createPokemonCard(data);
-};
+// const getPokemon = async (id) => {
+//   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+//   const res = await fetch(url);
+//   const data = await res.json();
+//   console.log(data);
+//   createPokemonCard(data);
+// };
 
 const createPokemonCard = (pokemon) => {
   const pokemonEl = document.createElement("div");
@@ -104,7 +160,20 @@ const createPokemonCard = (pokemon) => {
   poke_container.appendChild(pokemonEl);
 };
 
-fetchPokemons();
+const changeRegion = () => {
+  const regionSelect = document.getElementById("regionSelect");
+  regionSelect.removeEventListener("change", changeRegion);
+  regionSelect.addEventListener("change", changeRegion);
+  const selectedRegion = regionSelect.value;
+  poke_container.innerHTML = ""; // Clear existing Pokémon cards
+  fetchPokemons(selectedRegion);
+};
+
+document
+  .getElementById("regionSelect")
+  .addEventListener("change", changeRegion);
+
+fetchPokemons("kanto");
 
 window.addEventListener("scroll", function () {
   var scrollToTopBtn = document.getElementById("scrollToTopBtn");
