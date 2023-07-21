@@ -67,13 +67,16 @@ const fetchPokemons = async (region) => {
   const { start, end } = regions[region];
   for (let i = start; i <= end; i++) {
     const pokemonName = i.toString();
-    await getPokemon(pokemonName);
+
+    getPokemon(pokemonName);
   }
 };
 const getPokemon = async (name) => {
   const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
+
   const res = await fetch(url);
   const data = await res.json();
+
   createPokemonCard(data);
 };
 
@@ -162,8 +165,8 @@ const createPokemonCard = (pokemon) => {
 
 const changeRegion = () => {
   const regionSelect = document.getElementById("regionSelect");
-  regionSelect.removeEventListener("change", changeRegion);
-  regionSelect.addEventListener("change", changeRegion);
+  regionSelect.removeEventListener("click", changeRegion);
+  regionSelect.addEventListener("click", changeRegion);
   const selectedRegion = regionSelect.value;
   poke_container.innerHTML = ""; // Clear existing Pokémon cards
   fetchPokemons(selectedRegion);
@@ -193,6 +196,23 @@ document
     });
   });
 
+window.addEventListener("scroll", function () {
+  var scrollToDownBtn = document.getElementById("scrollToDownBtn");
+  if (window.scrollY > 100) {
+    scrollToDownBtn.style.display = "block";
+  } else {
+    scrollToDownBtn.style.display = "none";
+  }
+});
+
+document
+  .getElementById("scrollToDownBtn")
+  .addEventListener("click", function () {
+    window.scrollTo({
+      top: 999999,
+      behavior: "smooth",
+    });
+  });
 function search_pokemon() {
   let input = document.getElementById("searchbar").value;
   input = input.toLowerCase();

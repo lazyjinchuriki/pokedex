@@ -117,7 +117,7 @@
 }
 
 .tabs {
-    font-size: 1.5em;
+    font-size: 1.38em;
     justify-content:space-evenly;
     color: black;
     font-weight: bold;
@@ -155,6 +155,7 @@
 .listItem{
     font-size: 1.25em;
     font-weight: 550;
+    font-family: 'Lato', sans-serif;
     margin: auto;
     padding: 1.5rem;
 }
@@ -164,48 +165,47 @@
     flex-direction: column;
     font-size: 0.8em;
     font-family: 'moltors', sans-serif;
+    margin-top: 10px;
 }
 .stats hr{
     width: 100%;
     margin: 5px, 10px;
     padding: 5px, 10px;
     border: none;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.37);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.6);
 }
 .stats .stat{
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    margin: 5px, 10px;
-    padding: 5px, 10px;
 }
 .stat div{
     text-align: left;
     margin-top: 5px;
     width: 30%;
+    padding: 10px;
 }
 .stats meter{
     width: 65%;
-    height: 2em;
-    margin: 5px, 10px;
-    padding: 5px, 10px;
+    height: 1.5em;
     border-radius: 10px;
     border: none;
     position: relative;
+    top: 13px;
 
 }
 meter::-webkit-meter-optimum-value{
-    background-color: #3dfd64;
+    background-color: #23dd48be;
 }
 meter::-webkit-meter-suboptimum-value{
-    background-color: #ffb700;
+    background-color: #fdc945e6;
 }
 meter::-webkit-meter-even-less-good-value{
-    background-color: #ff0000;
+    background-color: #ff4545e2;
 }
 .stats meter::-webkit-meter-bar{
-    background-color: rgba(255, 255, 255, 0.529);
+    background-color: rgba(255, 255, 255, 0.414);
     border: none;
 }
 
@@ -221,6 +221,8 @@ meter::-webkit-meter-even-less-good-value{
 .poke__type__bg {
     width: 40px;
     height: 40px;
+    margin: 10px;
+    overflow: visible;
     border-radius: 100%;
 }
 
@@ -323,7 +325,7 @@ meter::-webkit-meter-even-less-good-value{
     font-size: 1.25em;
     font-style: oblique;
     font-weight: 600;
-    font-family: 'moltors', sans-serif;
+    font-family: 'Lato', sans-serif;
     letter-spacing: 5px;
 }
 
@@ -331,5 +333,14 @@ meter::-webkit-meter-even-less-good-value{
     margin: 5px;
     padding: 10px;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.412);
+}
+
+.details{
+    background-color: rgba(245, 245, 245, 0.5);
+    border-radius: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    margin-top: 20px;
 }

@@ -89,6 +89,7 @@ const displayPokemonDetails = (pokemon) => {
   let tab2 = document.getElementById("tab_2");
   tab2.innerHTML = `
   <div class="stats">
+  <hr>
   <div class="stat">
   <div> Health:</div>
     <meter id="hp"
@@ -126,7 +127,7 @@ const displayPokemonDetails = (pokemon) => {
 
 
       <div class="stat">
-  <div> Sp. Attack:</div>
+  <div> Sp. Atk:</div>
     <meter id="spattack"
         min="0" max="255"
         low="80" high="150" optimum="200"
@@ -138,7 +139,7 @@ const displayPokemonDetails = (pokemon) => {
 <hr>
 
       <div class="stat">
-  <div> Sp. Defense:</div>
+  <div> Sp. Def:</div>
     <meter id="spdefense"
         min="0" max="255"
         low="80" high="150" optimum="200"
@@ -182,22 +183,14 @@ const displayPokemonDetails = (pokemon) => {
       `;
 };
 const displayPokemonSpecies = (pokemon) => {
-  const overview1 = pokemon.flavor_text_entries[0].flavor_text.replace(
-    "\f",
-    " "
-  );
-  const overview2 = pokemon.flavor_text_entries[2].flavor_text.replace(
-    "\f",
-    " "
-  );
-  const overview3 = pokemon.flavor_text_entries[4].flavor_text.replace(
+  const overview1 = pokemon.flavor_text_entries[7].flavor_text.replace(
     "\f",
     " "
   );
   let tab1 = document.getElementById("tab_1");
   tab1.innerHTML = `
   <div class="listWrapper">
-  <p class="listItem"> " ${overview1} ${overview2} ${overview3} "</p>
+  <p class="listItem"> ${overview1}</p>
   </div>
         
 
