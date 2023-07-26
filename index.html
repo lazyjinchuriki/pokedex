@@ -11,25 +11,30 @@
   <body>
     <div id="page">
     <div class="nav">
+      <div class="logo">
+        <img src="./Icons/default/logo.png" alt="logo" width="80px" height="40px"/>
+      </div>
+
       <div class="box">
         <input id="searchbar" onkeyup="search_pokemon()" type="text" placeholder="Search">
       </div>
+      <div class="github">
+        <a href="https://github.com/lazyjinchuriki/pokedex" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
     </div>
   <div class="select-wrapper">
-    <select id="regionSelect" onchange="changeRegion()">
-      <option value="kanto">Kanto</option>
-      <option value="johto">Johto</option>
-      <option value="hoenn">Hoenn</option>
-      <option value="sinnoh">Sinnoh</option>
-      <option value="unova">Unova</option>
-      <option value="kalos">Kalos</option>
-      <option value="alola">Alola</option>
-      <option value="galar">Galar</option>
-      <option value="hisui">Hisui</option>
-      <option value="paldea">Paldea</option>
-
-      <!-- Add more options for other regions -->
-    </select>
+    <div id="regionSelect">
+      <span data-value="kanto">Kanto</span>
+      <span data-value="johto">Johto</span>
+      <span data-value="hoenn">Hoenn</span>
+      <span data-value="sinnoh">Sinnoh</span>
+      <span data-value="unova">Unova</span>
+      <span data-value="kalos">Kalos</span>
+      <span data-value="alola">Alola</span>
+      <span data-value="galar">Galar</span>
+      <span data-value="hisui">Hisui</span>
+      <span data-value="paldea">Paldea</span>
+    </div>
   </div>
 
     <div class="poke-container" id="poke-container">

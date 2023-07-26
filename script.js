@@ -71,8 +71,8 @@ const fetchPokemons = async (region) => {
     getPokemon(pokemonName);
   }
 };
-const getPokemon = async (name) => {
-  const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
+const getPokemon = async (id) => {
+  const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
 
   const res = await fetch(url);
   const data = await res.json();
@@ -165,16 +165,15 @@ const createPokemonCard = (pokemon) => {
 
 const changeRegion = () => {
   const regionSelect = document.getElementById("regionSelect");
-  regionSelect.removeEventListener("click", changeRegion);
-  regionSelect.addEventListener("click", changeRegion);
-  const selectedRegion = regionSelect.value;
-  poke_container.innerHTML = ""; // Clear existing Pokémon cards
-  fetchPokemons(selectedRegion);
+  regionSelect.addEventListener("click", (event) => {
+    const selectedRegion = event.target.getAttribute("data-value");
+    if (selectedRegion) {
+      console.log(selectedRegion);
+      poke_container.innerHTML = "";
+      fetchPokemons(selectedRegion);
+    }
+  });
 };
-
-document
-  .getElementById("regionSelect")
-  .addEventListener("change", changeRegion);
 
 fetchPokemons("kanto");
 
@@ -231,3 +230,5 @@ function search_pokemon() {
     }
   }
 }
+
+changeRegion();

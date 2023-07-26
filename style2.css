@@ -17,6 +17,8 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 :root {
     --grass: #5FBD58;
@@ -176,24 +178,25 @@
 }
 .stats .stat{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     width: 100%;
 }
 .stat div{
     text-align: left;
     margin-top: 5px;
-    width: 30%;
+    width: 35%;
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 .stats meter{
-    width: 65%;
+    width: 60%;
     height: 1.5em;
     border-radius: 10px;
     border: none;
     position: relative;
     top: 13px;
-
+    padding-right: 5px;
 }
 meter::-webkit-meter-optimum-value{
     background-color: #23dd48be;
@@ -205,7 +208,7 @@ meter::-webkit-meter-even-less-good-value{
     background-color: #ff4545e2;
 }
 .stats meter::-webkit-meter-bar{
-    background-color: rgba(255, 255, 255, 0.414);
+    background-color: rgba(183, 183, 183, 0.3);
     border: none;
 }
 
@@ -337,10 +340,57 @@ meter::-webkit-meter-even-less-good-value{
 }
 
 .details{
-    background-color: rgba(245, 245, 245, 0.5);
-    border-radius: 30px;
+    background-color: rgba(245, 245, 245, 0.798);
+    border-radius: 40px 40px 0px 0px;
     padding-top: 10px;
     padding-bottom: 10px;
     overflow: hidden;
     margin-top: 20px;
+}
+
+.overview p{
+    font-size: 1.5em;
+    padding: 20px 10px;
+    font-family: 'Lato', sans-serif;
+}
+.about{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+    gap: 10px;
+    text-transform: capitalize;
+    font-style: oblique;
+    font-weight: 600;
+    font-size: 1.5em;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 5px;
+}
+
+.previousBtn{
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 99999;
+    border: none;
+    outline: none;
+    background-color: #202020;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.nextBtn {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 99999;
+    border: none;
+    outline: none;
+    background-color: #202020;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
 }

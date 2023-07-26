@@ -19,6 +19,8 @@
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 :root {
@@ -46,14 +48,14 @@ body {
   background: #efefbb;
   /* background: linear-gradient(to right, #ffffff, #827eff); */
   background-color: whitesmoke;
-  margin: 0;
+
 }
 
 h1 {
   letter-spacing: 3px;
   font-weight: 800;
   font-size: 2.5em;
-  margin: 0;
+
   padding: 20px;
   color: black;
 }
@@ -80,8 +82,8 @@ h1 {
   transition: 0.25s ease-in-out;
   min-width: 210px;
   max-width: 210px;
-  min-height: 350px;
-  max-height: 350px;
+  min-height: 330px;
+  max-height: 330px;
   color: #202020;
   perspective: 1000px;
 }
@@ -207,8 +209,8 @@ h1 {
 }
 
 #scrollToTopBtn {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: none;
   position: fixed;
   bottom: 30px;
@@ -222,8 +224,8 @@ h1 {
   border-radius: 50%;
 }
 #scrollToDownBtn {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: none;
   position: fixed;
   bottom: 30px;
@@ -239,22 +241,27 @@ h1 {
 
 .nav{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 10px;
   height: auto;
   width: 100%;
   z-index: 100;
 }
+.nav .github, a{
+  color: #202020;
+  font-size: 1.5em;;
+  padding: 10px;
+}
 
 .box input{
   width: 300px;
-  height: 40px;
+  height: 50px;
   border-radius: 10px;
   border: none;
   outline: none;
   padding: 0 10px;
-  font-size: 1.2em;
+  font-size: 1.7em;
   background-color: rgba(0, 0, 0, 0.1);
   font-weight: 300;
   letter-spacing: 5px;
@@ -373,58 +380,9 @@ h1 {
   /* box-shadow: 0 0 20px var(--fire); */
 }
 
-/* Dropdown Styles */
-.select-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.select-wrapper::after {
-  content: '\25BC';
-  /* Unicode down arrow */
-  position: absolute;
-  top: 50%;
-  right: 25px;
-  transform: translateY(-50%);
-  font-size: 12px;
-  pointer-events: none;
-}
-
-select {
-  padding: 8px 30px 8px 10px;
-  font-size: 14px;
-  font-weight: bold;
-  border: none;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  appearance: none;
-  outline: none;
-}
-
-/* Dropdown Styles - Customization to match your existing styles */
-.select-wrapper {
-  margin: 10px 0;
-  padding: 0 20px;
-}
-
-select {
-  width: 150px;
-
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Optional - Additional styles for the options */
-option {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  font-size: 14px;
-  font-weight: bold;
-
-}
 
 
-#loader {
+/* #loader {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -467,7 +425,6 @@ option {
   z-index: 1;
 }
 
-/* AnimationFrames */
 @keyframes frames {
   0% {
     transform: rotate(0deg);
@@ -476,4 +433,53 @@ option {
   100% {
     transform: rotate(360deg);
   }
+} */
+
+.select-wrapper{
+    overflow: hidden;
+    max-width: 100%;
+    width: max-content;
+    margin: auto;
+    margin-bottom: 20px;
+    font-family: 'slumbersWeight', sans-serif;
+    font-size: 1.8em;
+    font-style: italic;
+    letter-spacing: 2px;
+    text-align: center;
+    padding-left: 20px;
+    position: relative;
 }
+#regionSelect{
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 16px;
+      overflow-x: scroll;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+}
+#regionSelect::-webkit-scrollbar {
+  display: none;
+}
+#regionSelect::-moz-scrollbar {
+  display: none;
+}
+
+#regionSelect span{
+  background-color: rgba(46, 46, 46, 0.1);
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+}
+#regionSelect span:hover{
+  background-color: rgba(0, 0, 0, 0.431);
+  transition: 0.25s ease-in-out;
+}
+
+
+
+

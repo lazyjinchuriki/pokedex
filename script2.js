@@ -25,65 +25,51 @@ const main_types = Object.keys(colors);
 
 const fetchPokemonDetails = async () => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+  const url2 = `https://pokeapi.co/api/v2/pokemon-species/${id}`;
   const res = await fetch(url);
+  const res2 = await fetch(url2);
   const data = await res.json();
-  console.log(data);
-  displayPokemonDetails(data);
-};
-const fetchPokemonSpecies = async () => {
-  const url = `https://pokeapi.co/api/v2/pokemon-species/${id}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  console.log(data);
-  displayPokemonSpecies(data);
+  const data2 = await res2.json();
+  const arr = [data, data2];
+  console.log(arr);
+  displayPokemonDetails(arr);
 };
 
 const displayPokemonDetails = (pokemon) => {
-  const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
-  const id = pokemon.id.toString().padStart(3, "0");
-  const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
-  const poke_types = pokemon.types.map((type) => type.type.name);
+  const name = pokemon[0].name[0].toUpperCase() + pokemon[0].name.slice(1);
+  const id = pokemon[0].id.toString().padStart(3, "0");
+  const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon[0].id}.svg`;
+  const poke_types = pokemon[0].types.map((type) => type.type.name);
   const type = main_types.find((type) => poke_types.indexOf(type) > -1);
   const color = colors[type];
 
-  const hp = pokemon.stats[0].base_stat;
+  const hp = pokemon[0].stats[0].base_stat;
   const maxHp = hp * 2 + 204;
   const minHp = hp * 2 + 110;
-  const attack = pokemon.stats[1].base_stat;
+  const attack = pokemon[0].stats[1].base_stat;
   const maxAttack = Math.floor((attack * 2 + 99) * 1.1);
   const minAttack = Math.floor((attack * 2 + 5) * 0.9);
-  const spAttack = Math.floor(pokemon.stats[3].base_stat);
+  const spAttack = Math.floor(pokemon[0].stats[3].base_stat);
   const maxSpAttack = Math.floor((spAttack * 2 + 99) * 1.1);
   const minSpAttack = Math.floor((spAttack * 2 + 5) * 0.9);
-  const spDefense = Math.floor(pokemon.stats[4].base_stat);
+  const spDefense = Math.floor(pokemon[0].stats[4].base_stat);
   const maxSpDefense = Math.floor((spDefense * 2 + 99) * 1.1);
   const minSpDefense = Math.floor((spDefense * 2 + 5) * 0.9);
-  const defense = pokemon.stats[2].base_stat;
+  const defense = pokemon[0].stats[2].base_stat;
   const maxDefense = Math.floor((defense * 2 + 99) * 1.1);
   const minDefense = Math.floor((defense * 2 + 5) * 0.9);
-  const speed = pokemon.stats[5].base_stat;
+  const speed = pokemon[0].stats[5].base_stat;
   const maxSpeed = Math.floor((speed * 2 + 99) * 1.1);
   const minSpeed = Math.floor((speed * 2 + 5) * 0.9);
 
-  const abilities = pokemon.abilities.map((ability) => ability.ability.name);
-  const moves = pokemon.moves.map((move) => move.move.name);
+  const abilities = pokemon[0].abilities.map((ability) => ability.ability.name);
+  const moves = pokemon[0].moves.map((move) => move.move.name);
 
   document.body.style.backgroundColor = color;
 
   let tab3 = document.getElementById("tab_3");
   tab3.innerHTML = `
-  <div class="abilities">
-  <h1>Abilities</h1>
-  <div class="ability">
-  ${abilities.map((ability) => `<div>${ability}</div>`).join("")}
-  </div>
-  </div>
-  <br>
-  <h1>Moves</h1>
-  <div class="moves">
-  ${moves.map((move) => `<div class="move">${move}</div>`).join("")}
-  </div>
-  
+
   `;
 
   let tab2 = document.getElementById("tab_2");
@@ -91,7 +77,10 @@ const displayPokemonDetails = (pokemon) => {
   <div class="stats">
   <hr>
   <div class="stat">
-  <div> Health:</div>
+  <div>
+  <span> Health:</span>
+  <span>${hp}</span>
+  </div>
     <meter id="hp"
     style="content: 'HP';"
        min="0" max="255"
@@ -99,35 +88,41 @@ const displayPokemonDetails = (pokemon) => {
        value="${hp}">
   </meter>
   </div>
-  <hr>
+
 
     <div class="stat">
-  <div> Attack:</div>
-
+    <div>
+  <span> Atk:</span>
+  <span>${attack}</span>
+  </div>
     <meter id="attack"
         min="0" max="255"
         low="80" high="150" optimum="200"
         value="${attack}">
   </meter>
   </div>
-  <hr>
+
 
 
     <div class="stat">
-  <div> Defense:</div>
+    <div>
+  <span> Def:</span>
+  <span>${defense}</span>
+  </div>
     <meter id="defense"
         min="0" max="255"
         low="80" high="150" optimum="200"
         value="${defense}">
   </meter>
-
-
   </div>
-<hr>
+
 
 
       <div class="stat">
-  <div> Sp. Atk:</div>
+    <div>
+  <span> Sp. Atk:</span>
+  <span>${spAttack}</span>
+  </div>
     <meter id="spattack"
         min="0" max="255"
         low="80" high="150" optimum="200"
@@ -136,37 +131,53 @@ const displayPokemonDetails = (pokemon) => {
 
 
   </div>
-<hr>
+
 
       <div class="stat">
-  <div> Sp. Def:</div>
+    <div>
+  <span> Sp. Def:</span>
+  <span>${spDefense}</span>
+  </div>
     <meter id="spdefense"
         min="0" max="255"
         low="80" high="150" optimum="200"
         value="${spDefense}">
   </meter>
-
-
   </div>
-<hr>
+
 
 
     <div class="stat">
-  <div> Speed:</div>
+    <div>
+  <span> Speed:</span>
+  <span>${speed}</span>
+  </div>
     <meter id="speed"
         min="0" max="255"
         low="80" high="150" optimum="200"
         value="${speed}">
   </meter>
   </div>
-  <hr>
-  </div>
 
+
+      <div class="stat">
+      <div>
+  <span> Total:</span>
+  <span>${speed + hp + attack + defense + spAttack + spDefense}</span>
+  </div>
+    <meter id="total"
+        min="0" max="1530"
+        low="500" high="1000" optimum="1300"
+        value="${speed + hp + attack + defense + spAttack + spDefense}">
+  </meter>
+  </div>
 
 
   `;
   let pokemonDetailsEl = document.getElementById("pokemon-details");
   pokemonDetailsEl.innerHTML = `
+        <button class="previousBtn" onclick="window.history.back()"><i class="fas fa-chevron-left"></i></button>
+        <button class="nextBtn" onclick="nextPokemon()"><i class="fas fa-chevron-right"></i></button>
         <div class="top">
         <div class="image">
         <img src="${imageSrc}" alt="${name}">
@@ -181,16 +192,31 @@ const displayPokemonDetails = (pokemon) => {
         </div>
 
       `;
-};
-const displayPokemonSpecies = (pokemon) => {
-  const overview1 = pokemon.flavor_text_entries[7].flavor_text.replace(
+
+  const overview1 = pokemon[1].flavor_text_entries[7].flavor_text.replace(
     "\f",
     " "
   );
+  const height = pokemon[0].height / 10 + "m";
+  const weight = pokemon[0].weight / 10 + "kg";
+
   let tab1 = document.getElementById("tab_1");
   tab1.innerHTML = `
-  <div class="listWrapper">
-  <p class="listItem"> ${overview1}</p>
+  <div>
+  <div class="overview">
+  <p>${overview1}</p>
+  <div class="about">
+  <div>Type: ${poke_types}</div>
+  <div>Height: ${height}</div>
+  <div>Weight: ${weight}</div>
+  <div>Abilities: ${abilities}</div>
+  <div> Shape: ${pokemon[1].shape.name}</div>
+  <div> Habitat: ${pokemon[1].habitat.name}</div>
+  <div> Color: ${pokemon[1].color.name}</div>
+
+  <div> Capture Rate: ${pokemon[1].capture_rate}</div>
+
+  </div>
   </div>
         
 
@@ -212,5 +238,7 @@ tabs.forEach((tab) => {
   });
 });
 
+const nextPokemon = () => {
+  window.location.href = `details.html?id=${id + 1}`;
+};
 fetchPokemonDetails();
-fetchPokemonSpecies();
