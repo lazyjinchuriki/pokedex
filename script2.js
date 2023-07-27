@@ -38,9 +38,11 @@ const fetchPokemonDetails = async () => {
 const displayPokemonDetails = (pokemon) => {
   const name = pokemon[0].name[0].toUpperCase() + pokemon[0].name.slice(1);
   const id = pokemon[0].id.toString().padStart(3, "0");
-  const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon[0].id}.svg`;
+  const imageSrc = pokemon[0].sprites.other.dream_world.front_default;
+  const imageSrc2 = pokemon[0].sprites.other["official-artwork"].front_default;
   const poke_types = pokemon[0].types.map((type) => type.type.name);
   const type = main_types.find((type) => poke_types.indexOf(type) > -1);
+
   const color = colors[type];
 
   const hp = pokemon[0].stats[0].base_stat;
@@ -69,6 +71,8 @@ const displayPokemonDetails = (pokemon) => {
 
   let tab3 = document.getElementById("tab_3");
   tab3.innerHTML = `
+  <div class="evolution">
+  </div>
 
   `;
 
@@ -149,7 +153,7 @@ const displayPokemonDetails = (pokemon) => {
 
     <div class="stat">
     <div>
-  <span> Speed:</span>
+  <span>Speed:</span>
   <span>${speed}</span>
   </div>
     <meter id="speed"
@@ -176,11 +180,11 @@ const displayPokemonDetails = (pokemon) => {
   `;
   let pokemonDetailsEl = document.getElementById("pokemon-details");
   pokemonDetailsEl.innerHTML = `
-        <button class="previousBtn" onclick="window.history.back()"><i class="fas fa-chevron-left"></i></button>
+        <button class="previousBtn" onclick="backButton()"><i class="fas fa-chevron-left"></i></button>
         <button class="nextBtn" onclick="nextPokemon()"><i class="fas fa-chevron-right"></i></button>
         <div class="top">
         <div class="image">
-        <img src="${imageSrc}" alt="${name}">
+        <img src="${imageSrc == null ? imageSrc2 : imageSrc}" alt="${name}">
         <div class="circle"></div>
         </div>
         <span class="id">#${id}</span>
@@ -206,16 +210,8 @@ const displayPokemonDetails = (pokemon) => {
   <div class="overview">
   <p>${overview1}</p>
   <div class="about">
-  <div>Type: ${poke_types}</div>
-  <div>Height: ${height}</div>
-  <div>Weight: ${weight}</div>
-  <div>Abilities: ${abilities}</div>
-  <div> Shape: ${pokemon[1].shape.name}</div>
-  <div> Habitat: ${pokemon[1].habitat.name}</div>
-  <div> Color: ${pokemon[1].color.name}</div>
-
-  <div> Capture Rate: ${pokemon[1].capture_rate}</div>
-
+  <span>Height:<br><b>${height}</b></span>
+  <span>Weight:<br><b>${weight}</b></span>
   </div>
   </div>
         
@@ -240,5 +236,8 @@ tabs.forEach((tab) => {
 
 const nextPokemon = () => {
   window.location.href = `details.html?id=${id + 1}`;
+};
+const backButton = () => {
+  window.history.back();
 };
 fetchPokemonDetails();

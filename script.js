@@ -76,7 +76,7 @@ const getPokemon = async (id) => {
 
   const res = await fetch(url);
   const data = await res.json();
-
+  console.log(data);
   createPokemonCard(data);
 };
 
@@ -119,13 +119,15 @@ const createPokemonCard = (pokemon) => {
   const poke_types = pokemon.types.map((type) => type.type.name);
   const type = main_types.find((type) => poke_types.indexOf(type) > -1);
   const color = colors[type];
+  const frontImg = pokemon.sprites.front_default;
+  const backImg = pokemon.sprites.back_default;
 
   pokemonEl.style.backgroundColor = color;
 
   const pokemonInnerHTML = `
     <div class="front">
     <div class="front-image">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png"" alt="${name}">
+        <img src="${frontImg}" alt="${name}">
     </div>
     <div class="info">
         <span class="number">#${id}</span>
@@ -136,7 +138,7 @@ const createPokemonCard = (pokemon) => {
     </div>
     <div class="back">
     <div class="back-image">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokemon.id}.png" alt="${name}" />
+            <img src="${backImg == null ? frontImg : backImg}" alt="${name}" />
     </div>
     <div class="info2">
         <span class="number">#${id}</span>
