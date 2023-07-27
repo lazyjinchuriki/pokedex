@@ -197,10 +197,17 @@ const displayPokemonDetails = (pokemon) => {
 
       `;
 
-  const overview1 = pokemon[1].flavor_text_entries[7].flavor_text.replace(
-    "\f",
-    " "
-  );
+  const desiredLanguage = "en";
+  let overview = null;
+
+  for (const entry of pokemon[1].flavor_text_entries) {
+    if (entry.language.name === desiredLanguage) {
+      // Replace "\f" with a space in the flavor text
+      overview = entry.flavor_text.replace("\f", " ");
+      break; // Stop the loop once we find the English flavor text
+    }
+  }
+
   const height = pokemon[0].height / 10 + "m";
   const weight = pokemon[0].weight / 10 + "kg";
 
@@ -208,7 +215,7 @@ const displayPokemonDetails = (pokemon) => {
   tab1.innerHTML = `
   <div>
   <div class="overview">
-  <p>${overview1}</p>
+  <p>${overview}</p>
   <div class="about">
   <span>Height:<br><b>${height}</b></span>
   <span>Weight:<br><b>${weight}</b></span>
