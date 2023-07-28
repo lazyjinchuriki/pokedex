@@ -65,6 +65,7 @@ const displayPokemonDetails = (pokemon) => {
   const minSpeed = Math.floor((speed * 2 + 5) * 0.9);
 
   const abilities = pokemon[0].abilities.map((ability) => ability.ability.name);
+  const eggGroups = pokemon[1].egg_groups.map((group) => group.name);
   const moves = pokemon[0].moves.map((move) => move.move.name);
 
   document.body.style.backgroundColor = color;
@@ -88,7 +89,7 @@ const displayPokemonDetails = (pokemon) => {
     <meter id="hp"
     style="content: 'HP';"
        min="0" max="255"
-       low="80" high="150" optimum="200"
+       low="70" high="120" optimum="150"
        value="${hp}">
   </meter>
   </div>
@@ -96,12 +97,12 @@ const displayPokemonDetails = (pokemon) => {
 
     <div class="stat">
     <div>
-  <span> Atk:</span>
+  <span> Attack:</span>
   <span>${attack}</span>
   </div>
     <meter id="attack"
         min="0" max="255"
-        low="80" high="150" optimum="200"
+        low="70" high="120" optimum="150"
         value="${attack}">
   </meter>
   </div>
@@ -110,12 +111,12 @@ const displayPokemonDetails = (pokemon) => {
 
     <div class="stat">
     <div>
-  <span> Def:</span>
+  <span> Defense:</span>
   <span>${defense}</span>
   </div>
     <meter id="defense"
         min="0" max="255"
-        low="80" high="150" optimum="200"
+        low="70" high="120" optimum="150"
         value="${defense}">
   </meter>
   </div>
@@ -129,11 +130,9 @@ const displayPokemonDetails = (pokemon) => {
   </div>
     <meter id="spattack"
         min="0" max="255"
-        low="80" high="150" optimum="200"
+        low="70" high="120" optimum="150"
         value="${spAttack}">
   </meter>
-
-
   </div>
 
 
@@ -144,7 +143,7 @@ const displayPokemonDetails = (pokemon) => {
   </div>
     <meter id="spdefense"
         min="0" max="255"
-        low="80" high="150" optimum="200"
+        low="70" high="120" optimum="150"
         value="${spDefense}">
   </meter>
   </div>
@@ -158,7 +157,7 @@ const displayPokemonDetails = (pokemon) => {
   </div>
     <meter id="speed"
         min="0" max="255"
-        low="80" high="150" optimum="200"
+        low="70" high="120" optimum="150"
         value="${speed}">
   </meter>
   </div>
@@ -171,7 +170,7 @@ const displayPokemonDetails = (pokemon) => {
   </div>
     <meter id="total"
         min="0" max="1530"
-        low="500" high="1000" optimum="1300"
+        low="500" high="720" optimum="1000"
         value="${speed + hp + attack + defense + spAttack + spDefense}">
   </meter>
   </div>
@@ -189,8 +188,6 @@ const displayPokemonDetails = (pokemon) => {
         </div>
         <span class="id">#${id}</span>
         <div class="name">${name}</div>
-        <div class="poke__type__bg ${type}">
-        <img src="Icons/${type}.svg" alt="Type"></div>
         </div>
         </div>
         </div>
@@ -198,7 +195,8 @@ const displayPokemonDetails = (pokemon) => {
       `;
 
   const desiredLanguage = "en";
-  let overview = null;
+  let overview = "Sorry, no description available.";
+  let genus = "Sorry, no description available.";
 
   for (const entry of pokemon[1].flavor_text_entries) {
     if (entry.language.name === desiredLanguage) {
@@ -207,19 +205,71 @@ const displayPokemonDetails = (pokemon) => {
       break; // Stop the loop once we find the English flavor text
     }
   }
+  for (const entry of pokemon[1].genera) {
+    if (entry.language.name === desiredLanguage) {
+      genus = entry.genus;
+      break;
+    }
+  }
 
   const height = pokemon[0].height / 10 + "m";
   const weight = pokemon[0].weight / 10 + "kg";
+
+  const genderRate = pokemon[1].gender_rate;
+  let male = "";
+  let female = "";
+  if (genderRate === -1) {
+    male = "??";
+    female = "??";
+  } else if (genderRate === 0) {
+    male = "100%";
+    female = "0%";
+  } else if (genderRate === 8) {
+    male = "0%";
+    female = "100%";
+  } else {
+    female = (genderRate / 8) * 100 + "%";
+    male = 100 - (genderRate / 8) * 100 + "%";
+  }
+  const friendship = pokemon[1].base_happiness;
+  const catchRate = pokemon[1].capture_rate;
 
   let tab1 = document.getElementById("tab_1");
   tab1.innerHTML = `
   <div>
   <div class="overview">
-  <p>${overview}</p>
-  <div class="about">
+  <p><span class="genus">${genus}</span><br>${overview}</p>
+  <div class="heightWeight">
   <span>Height:<br><b>${height}</b></span>
   <span>Weight:<br><b>${weight}</b></span>
   </div>
+
+  <div class="types">
+  ${poke_types
+    .map(
+      (type) => `
+    <div class="poke__type__bg ${type}">
+      <img src="Icons/${type}.svg" alt="Type">
+    </div>
+  `
+    )
+    .join("")}
+  </div>
+  </div>
+
+  <div class="about">
+  <div>Gender: <b><i class="fa-solid fa-mars" style="color: #1f71ff;"></i>${male}  <i class="fa-solid fa-venus" style="color: #ff5c74;"></i>${female}</b></div>
+  <span>Abilities: <b>${abilities.join(", ")}</b></span>
+  <span>Catch Rate: <b>${catchRate} (${((catchRate / 255) * 100).toFixed(
+    2
+  )}% chance)</b></span>
+  <span>Base Friendship: <b>${friendship} (${
+    friendship < 50 ? "lower" : friendship < 100 ? "normal" : "higher"
+  })</b></span>
+  <span>Base Exp: <b>${pokemon[0].base_experience}</b></span>
+  <span>Growth Rate: <b>${pokemon[1].growth_rate.name}</b></span>
+  <span>Egg Groups: <b>${eggGroups.join(", ")}</b></span>
+
   </div>
         
 
@@ -247,4 +297,5 @@ const nextPokemon = () => {
 const backButton = () => {
   window.history.back();
 };
+
 fetchPokemonDetails();

@@ -134,7 +134,6 @@
     font-size: 1em;
     justify-content:space-evenly;
     color: black;
-    font-weight: 900;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 5px;
     display: flex;
@@ -162,13 +161,11 @@
     margin-top: 20px;
     font-size: 1.25em;
     font-style: oblique;
-    font-weight: 500;
     
 }
 
 .listItem{
     font-size: 1.25em;
-    font-weight: 550;
     font-family: 'Montserrat', sans-serif;
     margin: auto;
     padding: 1.5rem;
@@ -178,7 +175,7 @@
     display: flex;
     flex-direction: column;
     font-size: 1em;
-    font-weight: bolder;
+    font-weight: 900;
     font-family: 'Montserrat', sans-serif;
     margin-top: 10px;
 }
@@ -211,6 +208,7 @@
     top: 8px;
     padding-right: 5px;
 }
+
 meter::-webkit-meter-optimum-value{
     background-color: #23dd48be;
 }
@@ -244,92 +242,92 @@ meter::-webkit-meter-even-less-good-value{
 
 .grass {
     background: var(--grass);
-    /* box-shadow: 0 0 20px var(--grass); */
+    box-shadow: 0 0 20px var(--grass);
 }
 
 .bug {
     background: var(--bug);
-    /* box-shadow: 0 0 20px var(--bug); */
+    box-shadow: 0 0 20px var(--bug);
 }
 
 .dark {
     background: var(--dark);
-    /* box-shadow: 0 0 20px var(--dark); */
+    box-shadow: 0 0 20px var(--dark);
 }
 
 .dragon {
     background: var(--dragon);
-    /* box-shadow: 0 0 20px var(--dragon); */
+    box-shadow: 0 0 20px var(--dragon);
 }
 
 .electric {
     background: var(--electric);
-    /* box-shadow: 0 0 20px #796d26; */
+    box-shadow: 0 0 20px #796d26;
 }
 
 .fairy {
     background: var(--fairy);
-    /* box-shadow: 0 0 20px var(--fairy); */
+    box-shadow: 0 0 20px var(--fairy);
 }
 
 .fighting {
     background: var(--fighting);
-    /* box-shadow: 0 0 20px var(--fighting); */
+    box-shadow: 0 0 20px var(--fighting);
 }
 
 .flying {
     background: var(--flying);
-    /* box-shadow: 0 0 20px var(--flying); */
+    box-shadow: 0 0 20px var(--flying);
 }
 
 .ghost {
     background: var(--ghost);
-    /* box-shadow: 0 0 20px var(--ghost); */
+    box-shadow: 0 0 20px var(--ghost);
 }
 
 .ground {
     background: var(--ground);
-    /* box-shadow: 0 0 20px var(--ground); */
+    box-shadow: 0 0 20px var(--ground);
 }
 
 .ice {
     background: var(--ice);
-    /* box-shadow: 0 0 20px var(--ice); */
+    box-shadow: 0 0 20px var(--ice);
 }
 
 .normal {
     background: var(--normal);
-    /* box-shadow: 0 0 20px var(--normal); */
+    box-shadow: 0 0 20px var(--normal);
 }
 
 .poison {
     background: var(--poison);
-    /* box-shadow: 0 0 20px var(--poison); */
+    box-shadow: 0 0 20px var(--poison);
 }
 
 .psychic {
     background: var(--psychic);
-    /* box-shadow: 0 0 20px var(--psychic); */
+    box-shadow: 0 0 20px var(--psychic);
 }
 
 .rock {
     background: var(--rock);
-    /* box-shadow: 0 0 20px var(--rock); */
+    box-shadow: 0 0 20px var(--rock);
 }
 
 .steel {
     background: var(--steel);
-    /* box-shadow: 0 0 20px var(--steel); */
+    box-shadow: 0 0 20px var(--steel);
 }
 
 .water {
     background: var(--water);
-    /* box-shadow: 0 0 20px var(--water); */
+    box-shadow: 0 0 20px var(--water);
 }
 
 .fire {
     background: var(--fire);
-    /* box-shadow: 0 0 20px var(--fire); */
+    box-shadow: 0 0 20px var(--fire);
 }
 
 .ability, .moves{
@@ -362,13 +360,24 @@ meter::-webkit-meter-even-less-good-value{
 }
 
 .overview p{
-    font-size: 0.8em;
+    font-size: 1em;
     font-weight: 600;
     padding: 25px 20px;
     text-align: justify;
     font-family: 'Montserrat', sans-serif;
 }
-.about{
+.genus{
+    font-size: 1.5em;
+    font-weight: 600;
+    line-height: 1.5em;
+    font-family: 'Montserrat', sans-serif;
+}
+.types{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heightWeight{
     display: flex;
     font-family: 'Montserrat', sans-serif;
     background-color: rgba(255, 255, 255, 0.329);
@@ -381,6 +390,18 @@ meter::-webkit-meter-even-less-good-value{
     text-align: center;
     justify-content: space-evenly;
     align-items: center;
+}
+.about{
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+    text-transform: capitalize;
+    padding: 25px 20px;
+    text-align: justify;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .previousBtn{
