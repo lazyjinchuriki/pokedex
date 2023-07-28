@@ -132,8 +132,17 @@ const createPokemonCard = (pokemon) => {
     <div class="info">
         <span class="number">#${id}</span>
         <h3 class="name">${name}</h3>
-        <div class="poke__type__bg ${type}">
-        <img src="Icons/${type}.svg" alt="Type"></div>
+        <div class="types">
+          ${poke_types
+            .map(
+              (type) => `
+                <div class="poke__type__bg ${type}">
+                <img src="Icons/${type}.svg" alt="Type">
+                </div>
+          `
+            )
+            .join("")}
+        </div>
         </div>
     </div>
     <div class="back">

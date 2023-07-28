@@ -182,12 +182,12 @@ const displayPokemonDetails = (pokemon) => {
         <button class="previousBtn" onclick="backButton()"><i class="fas fa-chevron-left"></i></button>
         <button class="nextBtn" onclick="nextPokemon()"><i class="fas fa-chevron-right"></i></button>
         <div class="top">
+        <div class="name">${name}</div>
         <div class="image">
         <img src="${imageSrc == null ? imageSrc2 : imageSrc}" alt="${name}">
-        <div class="circle"></div>
+        <div class="circle"><img src="./Icons/default/pokeball.svg" alt="pokeball"></div>
+        
         </div>
-        <span class="id">#${id}</span>
-        <div class="name">${name}</div>
         </div>
         </div>
         </div>
@@ -258,6 +258,7 @@ const displayPokemonDetails = (pokemon) => {
   </div>
 
   <div class="about">
+  <div>Id: <b class="id">#${id}</b></div>
   <div>Gender: <b><i class="fa-solid fa-mars" style="color: #1f71ff;"></i>${male}  <i class="fa-solid fa-venus" style="color: #ff5c74;"></i>${female}</b></div>
   <span>Abilities: <b>${abilities.join(", ")}</b></span>
   <span>Catch Rate: <b>${catchRate} (${((catchRate / 255) * 100).toFixed(
