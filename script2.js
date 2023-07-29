@@ -26,17 +26,21 @@ const main_types = Object.keys(colors);
 const fetchPokemonDetails = async () => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const url2 = `https://pokeapi.co/api/v2/pokemon-species/${id}`;
+  const url3 = `https://pokeapi.co/api/v2/type/`;
   const res = await fetch(url);
   const res2 = await fetch(url2);
+  const res3 = await fetch(url3);
   const data = await res.json();
   const data2 = await res2.json();
-  const arr = [data, data2];
+  const data3 = await res3.json();
+  const arr = [data, data2, data3];
   console.log(arr);
   displayPokemonDetails(arr);
 };
 
 const displayPokemonDetails = (pokemon) => {
   const name = pokemon[0].name[0].toUpperCase() + pokemon[0].name.slice(1);
+  const japaneseName = pokemon[1].names[0].name;
   const id = pokemon[0].id.toString().padStart(3, "0");
   const imageSrc = pokemon[0].sprites.other.dream_world.front_default;
   const imageSrc2 = pokemon[0].sprites.other["official-artwork"].front_default;
@@ -179,17 +183,23 @@ const displayPokemonDetails = (pokemon) => {
   `;
   let pokemonDetailsEl = document.getElementById("pokemon-details");
   pokemonDetailsEl.innerHTML = `
+        <div class="btn">
         <button class="previousBtn" onclick="backButton()"><i class="fas fa-chevron-left"></i></button>
         <button class="nextBtn" onclick="nextPokemon()"><i class="fas fa-chevron-right"></i></button>
-        <div class="top">
+        </div>
+        <div class="names">
+        <div class="japaneseName">${japaneseName}</div>
         <div class="name">${name}</div>
-        <div class="image">
-        <img src="${imageSrc == null ? imageSrc2 : imageSrc}" alt="${name}">
-        <div class="circle"><img src="./Icons/default/pokeball.svg" alt="pokeball"></div>
         
         </div>
+        <div class="top">
+        <div class="image">
+        <img class="imgFront" src="${
+          imageSrc == null ? imageSrc2 : imageSrc
+        }" alt="${name}">
+        <img class="imgBack" src="./Icons/default/pokeball.svg" alt="pokeball">
         </div>
-        </div>
+
         </div>
 
       `;

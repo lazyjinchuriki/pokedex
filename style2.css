@@ -56,29 +56,51 @@
 .image {
     position: relative;
 }
-.top img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5vh;
-    width: 40vh;
+.image .imgFront{
+    width: 30vh;
+    height: 30vh;
+    top: 7vh;
+    position: relative;
     aspect-ratio: 1/1;
     z-index: 10;
-    object-fit: contain;
 }
-.circle{
+.imgBack{
     position: absolute;
-    top: -5vh;
-    width: 40vh;
-    z-index: -1;
-}
-.circle img{
-    animation: rotate 5s linear infinite;
-    width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: contain;
+    width: 30vh;
+    z-index: -10;
+    top: 3vh;
     opacity: 0.5;
+    animation: rotate 5s linear infinite;
+    right: 0px;
 }
+.names{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 2vh;
+}
+.name{
+    font-size: 3em;
+    font-weight: 800;
+    letter-spacing: 5px;
+    font-family: 'pocketMonk', sans-serif;
+    top: 5vh;
+    text-align: center;
+    z-index: 99;
+}
+.japaneseName{
+    font-size: 2em;
+    font-weight: 800;
+    letter-spacing: 5px;
+    font-family: 'pocketMonk', sans-serif;
+    top: 5vh;
+    text-align: center;
+    z-index: 99;
+    color: rgba(255, 255, 255, 0.253);
+}
+
+
 @keyframes rotate {
     0% {
         transform: rotate(0deg);
@@ -104,12 +126,6 @@
     border-bottom-right-radius: 50px; */
     
 
-}
-.nameId{
-    display:flex;
-    justify-content: space-around;
-    width: 100%;
-    padding-top: 10vh;
 }
 
 
@@ -149,9 +165,9 @@
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 5px;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 20px;
+    padding-top: 40px;
 }
 
 .tabs span {
@@ -190,6 +206,7 @@
     font-weight: 900;
     font-family: 'Montserrat', sans-serif;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 .stats hr{
     width: 100%;
@@ -342,24 +359,7 @@ meter::-webkit-meter-even-less-good-value{
     box-shadow: 0 0 20px var(--fire);
 }
 
-.ability, .moves{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    font-size: 1.25em;
-    font-style: oblique;
-    font-weight: 600;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 5px;
-}
 
-.ability div, .moves div{
-    margin: 5px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.412);
-}
 
 .details{
     background-color: rgb(245, 245, 245);
@@ -367,7 +367,6 @@ meter::-webkit-meter-even-less-good-value{
     border-radius: 40px 40px 0px 0px;
     padding-top: 10px;
     padding-bottom: 10px;
-    overflow: hidden;
     margin-top: 20px;
 }
 
@@ -396,12 +395,9 @@ meter::-webkit-meter-even-less-good-value{
     border-radius: 20px;
     padding: 10px 50px;
     font-size: 1.25em;
-    margin: 20px auto;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: space-evenly;
     width: max-content;
-    align-items: center;
+    margin: 20px auto;
+    text-align: center;
 }
 .about{
     font-size: 1em;
@@ -433,9 +429,9 @@ meter::-webkit-meter-even-less-good-value{
 .nextBtn {
     width: 40px;
     height: 40px;
-    position: fixed;
     top: 10px;
     right: 10px;
+    position: fixed;
     z-index: 99999;
     border: none;
     outline: none;
@@ -443,4 +439,8 @@ meter::-webkit-meter-even-less-good-value{
     color: white;
     cursor: pointer;
     border-radius: 50%;
+}
+.btn{
+    display: flex;
+    justify-content: space-between;
 }

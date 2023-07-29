@@ -102,6 +102,7 @@ const createPokemonCard = (pokemon) => {
   pokemonEl.id = pokemon.id;
 
   const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
+  const Name = name.split("-")[0];
   const id = pokemon.id.toString().padStart(3, "0");
   //    const moves = [];
   //    try {
@@ -131,7 +132,7 @@ const createPokemonCard = (pokemon) => {
     </div>
     <div class="info">
         <span class="number">#${id}</span>
-        <h3 class="name">${name}</h3>
+        <h3 class="name">${Name}</h3>
         <div class="types">
           ${poke_types
             .map(

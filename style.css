@@ -95,6 +95,7 @@ h1 {
     min-width: 45vw;
     min-height: 300px;
     max-height: 300px;
+    overflow: hidden;
   }
   .front{
     width: fit-content;
@@ -125,22 +126,26 @@ h1 {
   .info .number{
     font-size: 0.8em;
   }
-  .name{
-  }
   .stats{
     font-size: 0.8em;
     letter-spacing: 0px;
   }
 
-    .poke__type__bg>img {
-      width: 15px;
-      height: 15px;
-    }
+ .poke__type__bg>img {
+    width: 15px;
+    height: 15px;
+  }
   
-    .poke__type__bg {
-      width: 35px;
-      height: 35px;
+ .poke__type__bg {
+    width: 35px;
+    height: 35px;
+  }
+    .card .info .name {
+      margin: 10px !important;
+      font-family: 'pocketMonk', sans-serif;
+  
     }
+
 
 
 }
@@ -247,7 +252,6 @@ h1 {
   font-size: 1.45em;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: clip;
 
 }
 
