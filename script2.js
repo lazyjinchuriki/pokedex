@@ -38,7 +38,7 @@ const fetchPokemonDetails = async () => {
   displayPokemonDetails(arr);
 };
 
-const displayPokemonDetails = (pokemon) => {
+const displayPokemonDetails = async (pokemon) => {
   const name = pokemon[0].name[0].toUpperCase() + pokemon[0].name.slice(1);
   const japaneseName = pokemon[1].names[0].name;
   const id = pokemon[0].id.toString().padStart(3, "0");
@@ -50,41 +50,108 @@ const displayPokemonDetails = (pokemon) => {
   const color = colors[type];
 
   const hp = pokemon[0].stats[0].base_stat;
-  const maxHp = hp * 2 + 204;
-  const minHp = hp * 2 + 110;
+  // const maxHp = hp * 2 + 204;
+  // const minHp = hp * 2 + 110;
   const attack = pokemon[0].stats[1].base_stat;
-  const maxAttack = Math.floor((attack * 2 + 99) * 1.1);
-  const minAttack = Math.floor((attack * 2 + 5) * 0.9);
+  // const maxAttack = Math.floor((attack * 2 + 99) * 1.1);
+  // const minAttack = Math.floor((attack * 2 + 5) * 0.9);
   const spAttack = Math.floor(pokemon[0].stats[3].base_stat);
-  const maxSpAttack = Math.floor((spAttack * 2 + 99) * 1.1);
-  const minSpAttack = Math.floor((spAttack * 2 + 5) * 0.9);
+  // const maxSpAttack = Math.floor((spAttack * 2 + 99) * 1.1);
+  // const minSpAttack = Math.floor((spAttack * 2 + 5) * 0.9);
   const spDefense = Math.floor(pokemon[0].stats[4].base_stat);
-  const maxSpDefense = Math.floor((spDefense * 2 + 99) * 1.1);
-  const minSpDefense = Math.floor((spDefense * 2 + 5) * 0.9);
+  // const maxSpDefense = Math.floor((spDefense * 2 + 99) * 1.1);
+  // const minSpDefense = Math.floor((spDefense * 2 + 5) * 0.9);
   const defense = pokemon[0].stats[2].base_stat;
-  const maxDefense = Math.floor((defense * 2 + 99) * 1.1);
-  const minDefense = Math.floor((defense * 2 + 5) * 0.9);
+  // const maxDefense = Math.floor((defense * 2 + 99) * 1.1);
+  // const minDefense = Math.floor((defense * 2 + 5) * 0.9);
   const speed = pokemon[0].stats[5].base_stat;
-  const maxSpeed = Math.floor((speed * 2 + 99) * 1.1);
-  const minSpeed = Math.floor((speed * 2 + 5) * 0.9);
+  // const maxSpeed = Math.floor((speed * 2 + 99) * 1.1);
+  // const minSpeed = Math.floor((speed * 2 + 5) * 0.9);
 
   const abilities = pokemon[0].abilities.map((ability) => ability.ability.name);
   const eggGroups = pokemon[1].egg_groups.map((group) => group.name);
-  const moves = pokemon[0].moves.map((move) => move.move.name);
-
+  // const moves = pokemon[0].moves.map((move) => move.move.name);
   document.body.style.backgroundColor = color;
+  const evolutionChainUrl = pokemon[1].evolution_chain.url;
+  const resEvolutionChain = await fetch(evolutionChainUrl);
+  const evolutionChainData = await resEvolutionChain.json();
+  console.log(evolutionChainData);
+
+  // const varitiesUrl = pokemon[1].varieties.map(
+  //   (variety) => variety.pokemon.url
+  // );
+  // console.log(varitiesUrl);
+  // const resVarities = await fetch(varitiesUrl[1]);
+  // const varitiesData = await resVarities.json();
+  // console.log(varitiesData);
+  // const varity1image =
+  //   varitiesData?.sprites?.other?.["official-artwork"]?.front_default;
+  // const varity1name = varitiesData.name;
 
   let tab3 = document.getElementById("tab_3");
   tab3.innerHTML = `
   <div class="evolution">
   </div>
-
+  </div>
   `;
+  const displayEvolutionChain = (evolutionChainData) => {
+    const container = document.querySelector(".evolution");
+    container.innerHTML = "";
+
+    const chain = evolutionChainData.chain;
+    displayEvolutionRecursive(chain, container);
+  };
+
+  const displayEvolutionRecursive = (chain, container) => {
+    const pokemonName = chain.species.name;
+    const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${getPokemonIdFromURL(
+      chain.species.url
+    )}.svg`;
+    const EvolutionId = getPokemonIdFromURL(chain.species.url);
+
+    const pokemonDiv = document.createElement("div");
+    pokemonDiv.classList.add("evolution__pokemon");
+    const iconDiv = document.createElement("div");
+
+    const nameElement = document.createElement("h1");
+    nameElement.textContent = pokemonName;
+    pokemonDiv.appendChild(nameElement);
+
+    const imageElement = document.createElement("img");
+    imageElement.src = imageUrl;
+    pokemonDiv.appendChild(imageElement);
+    imageElement.addEventListener("click", () => {
+      window.location.href = `details.html?id=${EvolutionId}}`;
+    });
+
+    if (chain.evolves_to.length > 0) {
+      const arrowIndicator = document.createElement("i");
+      arrowIndicator.classList.add(
+        "fa-solid",
+        "fa-caret-right",
+        "fa-2x",
+        "fa-beat"
+      );
+      iconDiv.appendChild(arrowIndicator);
+    }
+
+    container.appendChild(pokemonDiv);
+    container.appendChild(iconDiv);
+
+    if (chain.evolves_to.length > 0) {
+      const evolutionData = chain.evolves_to[0];
+      displayEvolutionRecursive(evolutionData, container);
+    }
+  };
+  function getPokemonIdFromURL(url) {
+    const parts = url.split("/");
+    return parts[parts.length - 2];
+  }
+  displayEvolutionChain(evolutionChainData);
 
   let tab2 = document.getElementById("tab_2");
   tab2.innerHTML = `
   <div class="stats">
-  <hr>
   <div class="stat">
   <div>
   <span> Health:</span>
@@ -288,6 +355,7 @@ const displayPokemonDetails = (pokemon) => {
 };
 
 const tabs = document.querySelectorAll("[data-tab-value]");
+const tabsContainer = document.querySelector(".tabs");
 const tabInfos = document.querySelectorAll("[data-tab-info]");
 
 tabs.forEach((tab) => {
@@ -301,12 +369,13 @@ tabs.forEach((tab) => {
     target.scrollIntoView({ behavior: "smooth" });
   });
 });
-
-const nextPokemon = () => {
+const nextPokemon = (e) => {
   window.location.href = `details.html?id=${id + 1}`;
+  e.preventDefault();
 };
-const backButton = () => {
+const backButton = (e) => {
   window.history.back();
+  e.preventDefault();
 };
 
 fetchPokemonDetails();
