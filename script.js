@@ -101,8 +101,12 @@ const createPokemonCard = (pokemon) => {
   pokemonEl.classList.add("card");
   pokemonEl.id = pokemon.id;
 
-  const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
-  const Name = name.split("-")[0];
+  let name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
+  if (name.length > 9) {
+    name = name.split("-")[0];
+  } else {
+    name = name;
+  }
   const id = pokemon.id.toString().padStart(3, "0");
   //    const moves = [];
   //    try {
@@ -126,13 +130,13 @@ const createPokemonCard = (pokemon) => {
   pokemonEl.style.backgroundColor = color;
 
   const pokemonInnerHTML = `
-    <div class="front">
-    <div class="front-image">
-        <img src="${frontImg}" alt="${name}">
-    </div>
-    <div class="info">
+    <div class="front side">
+        <div class="img-container">
+        <img class="background" src="./Icons/default/pokeball.svg" alt="pokeball">
+        <img class="image" src="${frontImg}" alt="${name}">
+        </div>
         <span class="number">#${id}</span>
-        <h3 class="name">${Name}</h3>
+        <h3 class="name">${name}</h3>
         <div class="types">
           ${poke_types
             .map(
@@ -144,15 +148,15 @@ const createPokemonCard = (pokemon) => {
             )
             .join("")}
         </div>
+    </div>
+    <div class="back side">
+        <div class="img-container">
+        <img class="image" src="${
+          backImg == null ? frontImg : backImg
+        }" alt="${name}" />
+        <img class="background" src="./Icons/default/pokeball.svg" alt="pokeball">
         </div>
-    </div>
-    <div class="back">
-    <div class="back-image">
-            <img src="${backImg == null ? frontImg : backImg}" alt="${name}" />
-    </div>
-    <div class="info2">
         <span class="number">#${id}</span>
-    </div>
     <div class="stats">
     <div> Weight:<br> <b>${weight}</b></div>
     <div> Height:<br> <b>${height}</b></div>

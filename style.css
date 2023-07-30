@@ -85,103 +85,17 @@ h1 {
   min-height: 330px;
   max-height: 330px;
   color: #202020;
-  perspective: 1000px;
-}
-@media screen and (max-width: 600px) {
-  .card {
-    margin: 10px;
-    padding: 0;
-    max-width: 165px;
-    min-width: 45vw;
-    min-height: 300px;
-    max-height: 300px;
-    overflow: hidden;
-  }
-  .front{
-    width: fit-content;
-    margin: auto;
-  }
-  .back{
-    width: fit-content;
-    margin: auto;
-  }
-  .front-image{
-    width: 100px;
-    height: 100px;
-  }
-  .back-image{
-    width: 100px;
-    height: 100px;
-    margin: 24px auto auto auto !important;
-  }
-  .info{
-    font-size: 0.8em;
-  }
-  .info2{
-    font-size: 0.8em;
-  }
-  .info2 .number{
-    font-size: 0.8em;
-  }
-  .info .number{
-    font-size: 0.8em;
-  }
-  .stats{
-    font-size: 0.8em;
-    letter-spacing: 0px;
-  }
-
- .poke__type__bg>img {
-    width: 15px;
-    height: 15px;
-  }
-  
- .poke__type__bg {
-    width: 35px;
-    height: 35px;
-  }
-    .card .info .name {
-      margin: 10px !important;
-      font-family: 'pocketMonk', sans-serif;
-  
-    }
-
-
-
-}
-.types{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.front{
-  backface-visibility: hidden;
+  perspective: 150rem;
   position: relative;
 }
-.back{
-  backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transform: rotateY(180deg);
-}
+@media screen and (max-width: 600px){
+  .card{
+    min-width: 45vw !important;
+    max-width: 45vw !important;
+  }
 
-/* .moves{
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  margin: 0 auto;
-}
-.moves div {
-    padding: 5px 15px;
-    border-radius: 10px;
-    font-size: 0.8em;
-    font-weight: bold;
-} */
 
+}
 
 .card:hover {
   transform: rotateY(180deg);
@@ -189,82 +103,87 @@ h1 {
   transition: 0.25s ease-in-out;
 
 }
-
-.card .front-image {
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  align-items: center;
-  margin: 20px auto auto auto;
-
-}
-
-.card .front-image img {
-  min-width: 70%;
-  image-rendering: pixelated;
-  margin-top: 30px;
-}
-.card .back-image img{
-  min-width: 70%;
-  image-rendering: pixelated;
-  margin-top: 30px;
-
-}
-.card .back-image{
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  align-items: center;
-  margin: 45px auto auto auto;
-}
-.card .info {
-  margin-top: 20px;
-  font-weight: 300;
-}
-.card .info2 {
-  margin-top: 20px;
-  font-weight: 300;
-}
-.card .info2 .number {
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 5px 5px;
-  border-radius: 10px;
-  font-size: 1em;
-    font-family: moltors, sans-serif;
-
-}
-
-.card .info .number {
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 5px 5px;
-  border-radius: 10px;
-  font-size: 1em;
-  font-family: moltors , sans-serif;
-
-}
-
-.card .info .name {
-  margin: 15px 0 7px;
-  letter-spacing: 5px;
-  font-family: 'pocketMonk', sans-serif;
-  font-size: 1.45em;
-  white-space: nowrap;
-  overflow: hidden;
-
-}
-
-.stats {
+.types{
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  padding: 0;
-  font-family: 'slumbersWeight', sans-serif;
-  font-size: 1.5em;
-  font-style: italic;
-  letter-spacing: 2px;
+}
+
+.front{
+  backface-visibility: hidden;
+  position: absolute;
+}
+.back{
+  backface-visibility: hidden;
+  position: absolute;
+  transform: rotateY(-180deg);
+}
+.back .background{
+  width: 150px;
+  position: absolute;
+  left: 0;
+  z-index: -10;
+  opacity: 0.4;
+  animation: rotate 5s linear infinite;
+}
+.side{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between !important;
+  align-items: center;
+}
+.image-container{
+  position: relative;
+}
+.image{
+    width: 150px;
+    top: 10px;
+    position: relative;
+    aspect-ratio: 1/1;
+    z-index: 10;
+    image-rendering: pixelated;
+}
+.background{
+    width: 150px;
+    position: absolute;
+    z-index: -10;
+    opacity: 0.4;
+    animation: rotate 5s linear infinite;
+}
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.number{
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 10px 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-size: 1em;
+    font-family: moltors, sans-serif;
+}
+.name{
+    padding: 10px;
+    letter-spacing: 5px;
+    font-family: 'pocketMonk', sans-serif;
+    font-size: 1.5em;
+    white-space: nowrap;
+    text-overflow: clip;
+
+}
+.stats{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 0;
+    font-family: 'slumbersWeight', sans-serif;
+    font-size: 1.5em;
+    font-style: italic;
+    letter-spacing: 2px;
 }
 
 #scrollToTopBtn {
@@ -346,11 +265,10 @@ h1 {
   width: 40px;
   height: 40px;
   border-radius: 100%;
+  margin: 0px 10px;
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .grass {
