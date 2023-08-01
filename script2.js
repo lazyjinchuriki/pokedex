@@ -77,23 +77,55 @@ const displayPokemonDetails = async (pokemon) => {
   const evolutionChainData = await resEvolutionChain.json();
   console.log(evolutionChainData);
 
-  // const varitiesUrl = pokemon[1].varieties.map(
-  //   (variety) => variety.pokemon.url
-  // );
-  // console.log(varitiesUrl);
-  // const resVarities = await fetch(varitiesUrl[1]);
-  // const varitiesData = await resVarities.json();
-  // console.log(varitiesData);
-  // const varity1image =
-  //   varitiesData?.sprites?.other?.["official-artwork"]?.front_default;
-  // const varity1name = varitiesData.name;
+  const varieties = pokemon[1].varieties
+    .map((variety) => {
+      if (variety.is_default === true) {
+        return null; // or return undefined;
+      }
+      return variety.pokemon;
+    })
+    .filter((item) => item !== null); // Remove null items from the array
+  console.log(varieties);
+  const resVarieties = await Promise.all(
+    varieties.map((variety) => fetch(variety.url))
+  );
+  const varietiesData = await Promise.all(
+    resVarieties.map((res) => res.json())
+  );
+  console.log(varietiesData);
 
   let tab3 = document.getElementById("tab_3");
   tab3.innerHTML = `
   <div class="evolution">
   </div>
+  <div class="varieties">
   </div>
   `;
+
+  const displayVarieties = (varietiesData) => {
+    const container = document.querySelector(".varieties");
+    container.innerHTML = "";
+
+    varietiesData.forEach((variety) => {
+      const pokemonName = variety.name;
+      const imgUrl = variety.sprites.other["official-artwork"].front_default;
+
+      const pokemonDiv = document.createElement("div");
+      pokemonDiv.classList.add("varieties__pokemon");
+
+      const nameElement = document.createElement("h1");
+      nameElement.textContent = pokemonName;
+      pokemonDiv.appendChild(nameElement);
+
+      const imageElement = document.createElement("img");
+      imageElement.src = imgUrl;
+      pokemonDiv.appendChild(imageElement);
+
+      container.appendChild(pokemonDiv);
+    });
+  };
+
+  displayVarieties(varietiesData);
   const displayEvolutionChain = (evolutionChainData) => {
     const container = document.querySelector(".evolution");
     container.innerHTML = "";
@@ -104,9 +136,10 @@ const displayPokemonDetails = async (pokemon) => {
 
   const displayEvolutionRecursive = (chain, container) => {
     const pokemonName = chain.species.name;
-    const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${getPokemonIdFromURL(
+    const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${getPokemonIdFromURL(
       chain.species.url
-    )}.svg`;
+    )}.png`;
+
     const EvolutionId = getPokemonIdFromURL(chain.species.url);
 
     const pokemonDiv = document.createElement("div");
@@ -118,7 +151,7 @@ const displayPokemonDetails = async (pokemon) => {
     pokemonDiv.appendChild(nameElement);
 
     const imageElement = document.createElement("img");
-    imageElement.src = imageUrl;
+    imageElement.src = imgUrl;
     pokemonDiv.appendChild(imageElement);
     imageElement.addEventListener("click", () => {
       window.location.href = `details.html?id=${EvolutionId}}`;
