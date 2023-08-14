@@ -183,10 +183,13 @@ const changeRegion = () => {
   const regionSelect = document.getElementById("regionSelect");
   regionSelect.addEventListener("click", (event) => {
     const selectedRegion = event.target.getAttribute("data-value");
+    const activeRegion = document.querySelector(".active");
     if (selectedRegion) {
       console.log(selectedRegion);
       poke_container.innerHTML = "";
       fetchPokemons(selectedRegion);
+      activeRegion.classList.remove("active");
+      event.target.classList.add("active");
     }
   });
 };
