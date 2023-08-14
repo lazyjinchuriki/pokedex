@@ -32,8 +32,9 @@ Once you have installed Pokedex, you can use it by opening it in your web browse
 Here are some screenshots of Pokedex in action:
 
 ![Homepage screenshot](/screenshots/homepage.png "Homepage")
-![Pokemon search screenshot](/screenshots/search.png "Pokemon Search")
-![Pokemon details screenshot](/screenshots/details.png "Pokemon Details")
+![Pokemon search screenshot](/screenshots/overview.png "Pokemon Overview")
+![Pokemon details screenshot](/screenshots/stats.png "Pokemon Ststs")
+![Pokemon details screenshot](/screenshots/evolution.png "Pokemon Evolution")
 
 ## Credits
 
