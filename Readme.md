@@ -1,7 +1,11 @@
-# Pokedex
-<a href="https://lazyjinchuriki.github.io/pokedex/"><img src="https://img.shields.io/badge/Visit%20My-Website-blue"></a>
+# Pokedex App
+[![Visit My Website](https://img.shields.io/badge/Visit%20My-Website-blue?style=for-the-badge&logo=arrow-right&logoColor=white)](https://lazyjinchuriki.github.io/pokedex/)
 
 Pokedex is a web application that serves as a comprehensive guide to Pokemon. It allows users to search for information on different Pokemon species, including their characteristics, abilities, types, and evolutions. The website is built using basic HTML, CSS, and vanilla JavaScript, and it utilizes the PokeAPI to fetch data on Pokemon.
+
+## Tech Stacks
+
+ ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) 
 
 ## Features
 
@@ -60,14 +64,15 @@ If you have any questions or concerns, you can contact the author of this projec
 
 ### Donations
 
-If you found Pokedex useful, consider buying me a coffee!
+If you found Gallery useful, consider buying me a coffee!
 
-[![Buy me a coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg)](https://www.buymeacoffee.com/lazyjinchuriki)
+<a href="https://www.buymeacoffee.com/lazyjinchuriki">
+  <img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg" width="150" height="50">
+</a>
 
 ## Social
 
-If you are not coding right now, you can check my social accounts.
+If you're not coding right now, check out my socials:
 
-[Instagram](https://www.instagram.com/amundaneguy/)
-
-[Linkedin](https://www.linkedin.com/in/rahul-khushalani-77ab21201/)
+[![Instagram](https://img.shields.io/badge/Instagram-%40amundaneguy-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/amundaneguy/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Rahul%20Khushalani-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rahul-khushalani-77ab21201/)
