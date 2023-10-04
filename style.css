@@ -107,15 +107,20 @@ h1 {
   display: flex;
 }
 
-.front{
+.front,
+.back {
   backface-visibility: hidden;
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
 }
-.back{
-  backface-visibility: hidden;
-  position: absolute;
+
+.back {
   transform: rotateY(-180deg);
 }
+
 .back .background{
   width: 150px;
   position: absolute;
@@ -422,9 +427,3 @@ h1 {
   background-color: black !important;
   color: white !important;
 }
-
-
-
-
-
-
