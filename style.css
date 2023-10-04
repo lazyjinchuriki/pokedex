@@ -433,6 +433,7 @@ a {
   position: relative;
   width: 80px;
   height: 80px;
+  margin-inline: auto;
 }
 .lds-ring div {
   box-sizing: border-box;
