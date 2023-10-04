@@ -63,6 +63,7 @@ const regions = {
   },
 };
 
+const loader = document.querySelector(".lds-ring");
 const fetchPokemons = async (region) => {
   const { start, end } = regions[region];
   for (let i = start; i <= end; i++) {
@@ -72,12 +73,19 @@ const fetchPokemons = async (region) => {
   }
 };
 const getPokemon = async (id) => {
+  loader.classList.add("ring-active");
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
 
-  const res = await fetch(url);
-  const data = await res.json();
+  await fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      setTimeout(() => {
+        loader.classList.remove("ring-active");
+        createPokemonCard(data);
+      }, 2000);
+    });
+
   console.log(data);
-  createPokemonCard(data);
 };
 
 const main_types = Object.keys(colors);

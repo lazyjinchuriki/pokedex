@@ -22,7 +22,6 @@ const colors = {
   ice: "#98D8D8",
 };
 const main_types = Object.keys(colors);
-
 const fetchPokemonDetails = async () => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const url2 = `https://pokeapi.co/api/v2/pokemon-species/${id}`;
@@ -413,9 +412,7 @@ const backButton = (e) => {
 
 fetchPokemonDetails();
 
-
-
-//preloader 
-window.addEventListener('load',function(){
-  document.querySelector('body').classList.add("loaded")  
+//preloader
+window.addEventListener("load", function () {
+  document.querySelector("body").classList.add("loaded");
 });

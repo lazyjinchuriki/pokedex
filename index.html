@@ -4,50 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
 
     <title>Pokedex</title>
   </head>
   <body>
     <div id="page">
-    <div class="nav">
-      <div class="logo">
-        <img src="./Icons/default/pokeball.png" alt="logo">
+      <div class="nav">
+        <div class="logo">
+          <img src="./Icons/default/pokeball.png" alt="logo" />
+        </div>
+        <div class="box">
+          <input
+            id="searchbar"
+            onkeyup="search_pokemon()"
+            type="text"
+            placeholder="Search"
+          />
+        </div>
+        <div class="github">
+          <a href="https://github.com/lazyjinchuriki/pokedex" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+        </div>
       </div>
-      <div class="box">
-        <input id="searchbar" onkeyup="search_pokemon()" type="text" placeholder="Search">
+      <div class="select-wrapper">
+        <div id="regionSelect">
+          <span data-value="kanto" class="active">Kanto</span>
+          <span data-value="johto">Johto</span>
+          <span data-value="hoenn">Hoenn</span>
+          <span data-value="sinnoh">Sinnoh</span>
+          <span data-value="unova">Unova</span>
+          <span data-value="kalos">Kalos</span>
+          <span data-value="alola">Alola</span>
+          <span data-value="galar">Galar</span>
+          <span data-value="hisui">Hisui</span>
+          <span data-value="paldea">Paldea</span>
+        </div>
       </div>
-      <div class="github">
-        <a href="https://github.com/lazyjinchuriki/pokedex" target="_blank"><i class="fab fa-github"></i></a>
+
+      <div class="poke-container" id="poke-container"></div>
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
+      <button id="scrollToTopBtn"><i class="fas fa-chevron-up"></i></button>
+      <button id="scrollToDownBtn"><i class="fas fa-chevron-down"></i></button>
     </div>
-  <div class="select-wrapper">
-    <div id="regionSelect">
-      <span data-value="kanto" class="active">Kanto</span>
-      <span data-value="johto">Johto</span>
-      <span data-value="hoenn">Hoenn</span>
-      <span data-value="sinnoh">Sinnoh</span>
-      <span data-value="unova">Unova</span>
-      <span data-value="kalos">Kalos</span>
-      <span data-value="alola">Alola</span>
-      <span data-value="galar">Galar</span>
-      <span data-value="hisui">Hisui</span>
-      <span data-value="paldea">Paldea</span>
-    </div>
-  </div>
-
-    <div class="poke-container" id="poke-container">
-    </div>
-
-    <button id="scrollToTopBtn"><i class="fas fa-chevron-up"></i></button>
-    <button id="scrollToDownBtn"><i class="fas fa-chevron-down"></i></button>
-  </div>
-
-
 
     <!-- Design inspired by this Dribbble shot: https://dribbble.com/shots/5611109--Pokemon -->
     <script src="script.js"></script>
     <!-- <script src="new.js"></script> -->
   </body>
 </html>
-
