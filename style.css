@@ -42,15 +42,32 @@
   --rock: #a38c21;
   --steel: #5695A3;
   --water: #539DDF;
+  --primary-color:whitesmoke;
+  --secondary-color:rgba(46, 46, 46, 0.1);
+  --tertiary-color:2px solid #202020;
+  --ternary-color:rgba(0, 0, 0, 0.1);
 }
 
 body {
   background: #efefbb;
   /* background: linear-gradient(to right, #ffffff, #827eff); */
-  background-color: whitesmoke;
+  background-color:var(--primary-color);
 
 }
 
+.dark-theme{  
+ --primary-color:black;
+ --secondary-color:rgb(255, 253, 253);
+ --tertiary-color:2px solid #ffee00;
+ --ternary-color:rgb(255, 253, 253);
+}
+.nav{
+  margin-left: 100px;
+}
+#page .for img{
+  margin-left:20px;
+  width:20px;
+}
 h1 {
   letter-spacing: 3px;
   font-weight: 800;
@@ -68,7 +85,11 @@ h1 {
   margin: 0 auto;
   max-width: 1200px;
 }
+.github i{
+  background-color:whitesmoke;
+  border-radius:50px;
 
+}
 
 .card {
   background-color: #eee;
@@ -244,7 +265,7 @@ h1 {
   border: none;
   outline: none;
   font-size: 1.7em;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--ternary-color);
   font-weight: 300;
   letter-spacing: 5px;
   font-family: 'slumbersWeight', sans-serif;
@@ -395,7 +416,7 @@ h1 {
 }
 
 #regionSelect span{
-  background-color: rgba(46, 46, 46, 0.1);
+  background-color:var(--secondary-color);
   padding: 5px 15px;
   border-radius: 10px;
   border: none;
