@@ -128,15 +128,20 @@ h1 {
   display: flex;
 }
 
-.front{
+.front,
+.back {
   backface-visibility: hidden;
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
 }
-.back{
-  backface-visibility: hidden;
-  position: absolute;
+
+.back {
   transform: rotateY(-180deg);
 }
+
 .back .background{
   width: 150px;
   position: absolute;
@@ -237,6 +242,18 @@ h1 {
   cursor: pointer;
   border-radius: 50%;
 }
+#searchbar:hover{
+  color: rgb(31, 31, 25);
+border: 2px solid rgb(20, 19, 21);
+ background-color: #eceaf5;
+
+}
+
+.nav.github,a:hover{
+color: #310d15;
+font-size: 1.8em;
+
+}
 
 .nav{
   display: flex;
@@ -251,6 +268,7 @@ h1 {
 .logo img{
   border-radius: 50%;
   width: 50px;
+  cursor: pointer;
 }
 .nav .github, a{
   color: #202020;
@@ -443,9 +461,3 @@ h1 {
   background-color: black !important;
   color: white !important;
 }
-
-
-
-
-
-
