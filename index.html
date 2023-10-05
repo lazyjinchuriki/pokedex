@@ -12,17 +12,21 @@
     <div id="page">
     <div class="nav">
       <div class="logo">
-        <img src="./Icons/default/pokeball.png" alt="logo">
+        <img src="./screenshots/moon.png " id="icon">
       </div>
       <div class="box">
-        <input id="searchbar" onkeyup="search_pokemon()" type="text" placeholder="Search">
+        <!-- <input id="searchbar" onkeyup="search_pokemon()" type="text" placeholder="Search"> -->
+        <div class="search-box">
+          <button class="btn-search" id="btn-search"><i class="fas fa-search"></i></button>
+          <input type="text" id="searchbar" onkeyup="search_pokemon()" class="input-search" placeholder="Type to Search...">
+        </div>
       </div>
       <div class="github">
         <a href="https://github.com/lazyjinchuriki/pokedex" target="_blank"><i class="fab fa-github"></i></a>
       </div>
-      <div class="for">
+      <!-- <div class="for">
       <img src="./screenshots/moon.png " id="icon">
-    </div>
+    </div> -->
     </div>
   <div class="select-wrapper">
     <div id="regionSelect">

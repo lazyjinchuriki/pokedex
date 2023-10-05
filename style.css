@@ -39,13 +39,14 @@
   --normal: #A0A29F;
   --poison: #B763CF;
   --psychic: #ff2ca8;
-  --rock: #a38c21;
+  --rock: #3d76bc;
+  --rack:rgba(144, 138, 138, 0.94);
   --steel: #5695A3;
   --water: #539DDF;
   --primary-color:whitesmoke;
   --secondary-color:rgba(46, 46, 46, 0.1);
   --tertiary-color:2px solid #202020;
-  --ternary-color:rgba(0, 0, 0, 0.1);
+  --ternary-color:rgba(81, 176, 13, 0.1);
 }
 
 body {
@@ -60,13 +61,10 @@ body {
  --secondary-color:rgb(255, 253, 253);
  --tertiary-color:2px solid #ffee00;
  --ternary-color:rgb(255, 253, 253);
+ --rock:transparent;
 }
 .nav{
   margin-left: 100px;
-}
-#page .for img{
-  margin-left:20px;
-  width:20px;
 }
 h1 {
   letter-spacing: 3px;
@@ -243,9 +241,9 @@ h1 {
   border-radius: 50%;
 }
 #searchbar:hover{
-  color: rgb(31, 31, 25);
-border: 2px solid rgb(20, 19, 21);
- background-color: #eceaf5;
+color:yellow;
+border: var(--tertiary-color);
+ background-color:var(--rock);
 
 }
 
@@ -267,7 +265,7 @@ font-size: 1.8em;
 }
 .logo img{
   border-radius: 50%;
-  width: 50px;
+  width: 30px;
   cursor: pointer;
 }
 .nav .github, a{
@@ -276,23 +274,63 @@ font-size: 1.8em;
   width: 10%;
 }
 
-.box input{
-  width: 100%;
-  height: 50px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  font-size: 1.7em;
-  background-color: var(--ternary-color);
-  font-weight: 300;
-  letter-spacing: 5px;
-  font-family: 'slumbersWeight', sans-serif;
-  text-align: center;
-}
-.box input:focus{
-  border: 2px solid #202020;
-}
 
+/* ................ */
+.search-box{
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+#searchbar{
+  height: 50px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all .5s ease-in-out;
+  background-color: #22a6b3;
+  padding-right: 40px;
+  color:yellow;
+}
+#searchbar::placeholder{
+  color:rgba(255,255,255,.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.btn-search{
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color:#ffffff ;
+  background-color:transparent;
+  pointer-events: painted;  
+}
+.btn-search:focus ~ #searchbar{
+  width: 300px;
+  border-radius: 0px;
+  background-color: var(--rock);
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+#searchbar:focus{
+  width: 300px;
+  border-radius: 0px;
+  background-color: var(--rock);
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+/* ................ */
 
 
 .poke__type__bg>img {
@@ -381,8 +419,8 @@ font-size: 1.8em;
 }
 
 .rock {
-  background: var(--rock);
-  box-shadow: 0 0 20px var(--rock);
+  background: var(--rack);
+  box-shadow: 0 0 20px var(--rack);
 }
 
 .steel {
