@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Pokemon Details</title>
-    <link rel="stylesheet" href="style2.css">
-    
+    <link rel="stylesheet" href="/res/css/style2.css">
+
 </head>
+
 <body>
     <div id="pokemon-details">
     </div>
 
-  
+
     <div class="details">
-    <div class="tabs">
-        <span data-tab-value="#tab_1">Overview</span>
-        <span data-tab-value="#tab_2">Stats</span>
-        <span data-tab-value="#tab_3">Evolution</span>
+        <div class="tabs">
+            <span data-tab-value="#tab_1">Overview</span>
+            <span data-tab-value="#tab_2">Stats</span>
+            <span data-tab-value="#tab_3">Evolution</span>
+        </div>
+
+        <div id="tab-content">
+            <div class="tabs__tab active" id="tab_1" data-tab-info>
+            </div>
+            <div class="tabs__tab " id="tab_2" data-tab-info>
+            </div>
+            <div class="tabs__tab " id="tab_3" data-tab-info>
+            </div>
+        </div>
     </div>
 
-    <div id="tab-content">
-        <div class="tabs__tab active" id="tab_1" data-tab-info>
+    <!-- preloader-->
+    <div class="loader-wrapper">
+        <div class="loader">
         </div>
-        <div class="tabs__tab " id="tab_2" data-tab-info>
-        </div>
-        <div class="tabs__tab " id="tab_3" data-tab-info>
-        </div>
-    </div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
     </div>
 
-<!-- preloader-->
-<div class="loader-wrapper">
-    <div class="loader">
-    </div>
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-  </div>
-
-<!-- preloader ends-->
-    <script src="script2.js"></script>
+    <!-- preloader ends-->
+    <script src="/res/js/script2.js"></script>
 </body>
+
 </html>

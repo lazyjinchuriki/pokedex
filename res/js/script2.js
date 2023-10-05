@@ -296,7 +296,7 @@ const displayPokemonDetails = async (pokemon) => {
         <img class="imgFront" src="${
           imageSrc == null ? imageSrc2 : imageSrc
         }" alt="${name}">
-        <img class="imgBack" src="./Icons/default/pokeball.svg" alt="pokeball">
+        <img class="imgBack" src="/res/icons/default/pokeball.svg" alt="pokeball">
         </div>
 
         </div>
@@ -358,7 +358,7 @@ const displayPokemonDetails = async (pokemon) => {
     .map(
       (type) => `
     <div class="poke__type__bg ${type}">
-      <img src="Icons/${type}.svg" alt="Type">
+      <img src="/res/icons/${type}.svg" alt="Type">
     </div>
   `
     )
