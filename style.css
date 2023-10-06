@@ -267,6 +267,11 @@ a {
 .poke__type__bg > img {
   width: 20px;
   height: 20px;
+  transition: all 0.3s ease; /* Add a smooth transition effect */
+}
+
+.poke__type__bg:hover > img {
+  transform: scale(1.2); /* Enlarge the type on hover */
 }
 
 .poke__type__bg {
