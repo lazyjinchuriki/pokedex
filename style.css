@@ -403,12 +403,13 @@ a {
   background-color: rgba(46, 46, 46, 0.1);
   padding: 5px 15px;
   border-radius: 10px;
-  border: none;
+  border: 2px solid transparent;
   outline: none;
   cursor: pointer;
+  transition: border-color 0.25s ease-in-out;
 }
 #regionSelect span:hover {
-  border: 2px solid #202020;
+  border-color: #202020;
 }
 
 ::-webkit-scrollbar {
