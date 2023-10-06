@@ -63,18 +63,7 @@ const regions = {
   },
 };
 
-// function to Toggle Light and Dark Mode 
-var icon = document.getElementById("icon");
-    icon.onclick = function(){
-      document.body.classList.toggle("dark-theme");
-      if(document.body.classList.contains("dark-theme")){
-        icon.src = "./screenshots/sun (1).png";
-      }
-      else{
-        icon.src = "./screenshots/moon.png";
-      }
-    }
-    
+const loader = document.querySelector(".lds-ring");
 const fetchPokemons = async (region) => {
   const { start, end } = regions[region];
   for (let i = start; i <= end; i++) {
