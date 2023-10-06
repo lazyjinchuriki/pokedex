@@ -13,38 +13,40 @@
   </head>
   <body>
     <div id="page">
-      <div class="nav">
-        <div class="logo">
-          <img src="./Icons/default/pokeball.png" alt="logo" />
-        </div>
-        <div class="box">
-          <input
-            id="searchbar"
-            onkeyup="search_pokemon()"
-            type="text"
-            placeholder="Search"
-          />
-        </div>
-        <div class="github">
-          <a href="https://github.com/lazyjinchuriki/pokedex" target="_blank"
-            ><i class="fab fa-github"></i
-          ></a>
+      
+    <div class="nav">
+      <div class="logo">
+        <img src="./screenshots/moon.png " id="icon">
+      </div>
+      <div class="box">
+        <!-- <input id="searchbar" onkeyup="search_pokemon()" type="text" placeholder="Search"> -->
+        <div class="search-box">
+          <button class="btn-search" id="btn-search"><i class="fas fa-search"></i></button>
+          <input type="text" id="searchbar" onkeyup="search_pokemon()" class="input-search" placeholder="Type to Search...">
         </div>
       </div>
-      <div class="select-wrapper">
-        <div id="regionSelect">
-          <span data-value="kanto" class="active">Kanto</span>
-          <span data-value="johto">Johto</span>
-          <span data-value="hoenn">Hoenn</span>
-          <span data-value="sinnoh">Sinnoh</span>
-          <span data-value="unova">Unova</span>
-          <span data-value="kalos">Kalos</span>
-          <span data-value="alola">Alola</span>
-          <span data-value="galar">Galar</span>
-          <span data-value="hisui">Hisui</span>
-          <span data-value="paldea">Paldea</span>
-        </div>
+      <div class="github">
+        <a href="https://github.com/lazyjinchuriki/pokedex" target="_blank"><i class="fab fa-github"></i></a>
       </div>
+      <!-- <div class="for">
+      <img src="./screenshots/moon.png " id="icon">
+    </div> -->
+    </div>
+  <div class="select-wrapper">
+    <div id="regionSelect">
+      <span data-value="kanto" class="active">Kanto</span>
+      <span data-value="johto">Johto</span>
+      <span data-value="hoenn">Hoenn</span>
+      <span data-value="sinnoh">Sinnoh</span>
+      <span data-value="unova">Unova</span>
+      <span data-value="kalos">Kalos</span>
+      <span data-value="alola">Alola</span>
+      <span data-value="galar">Galar</span>
+      <span data-value="hisui">Hisui</span>
+      <span data-value="paldea">Paldea</span>
+    </div>
+  </div>
+
 
       <div class="poke-container" id="poke-container"></div>
       <div class="lds-ring">
