@@ -320,6 +320,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 .stats meter{
     width: 60%;
     height: 1.5em;
@@ -343,6 +344,32 @@ meter::-webkit-meter-even-less-good-value{
     background-color: rgba(183, 183, 183, 0.3);
     border: none;
 }
+.statTypes{
+    width: 100%;
+    display: flex;
+    
+}
+.statTypes .statTypeText{
+    text-align: left;
+    margin-top: 5px;
+    width: 35%;
+    padding: 7px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 14px;
+}
+
+.statTypes img{
+    height: 30px;
+    border-radius: 20px; 
+    margin: 10px;
+}
+.statTypes .statIconHolder{
+    
+    
+    margin-left: 3%;
+}
+
 
 .poke__type__bg img {
     width: 20px;
