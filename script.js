@@ -62,6 +62,7 @@ const regions = {
     end: 1010,
   },
 };
+
 // function to Toggle Light and Dark Mode 
 var icon = document.getElementById("icon");
     icon.onclick = function(){
@@ -83,12 +84,19 @@ const fetchPokemons = async (region) => {
   }
 };
 const getPokemon = async (id) => {
+  loader.classList.add("ring-active");
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
 
-  const res = await fetch(url);
-  const data = await res.json();
+  await fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      setTimeout(() => {
+        loader.classList.remove("ring-active");
+        createPokemonCard(data);
+      }, 2000);
+    });
+
   console.log(data);
-  createPokemonCard(data);
 };
 
 const main_types = Object.keys(colors);
