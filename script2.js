@@ -180,19 +180,15 @@ const displayPokemonDetails = async (pokemon) => {
     return parts[parts.length - 2];
   }
   displayEvolutionChain(evolutionChainData);
-  let weakTypes=[...pokemon[2].damage_relations.double_damage_to.map((type)=>{
+  let weakTypes=[...pokemon[2].damage_relations.no_damage_to.map((type)=>{
       return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
-  }),...pokemon[2].damage_relations.no_damage_from.map((type)=>{
-    return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
-})]
+  })]
   var weakTypesString='';
   for(let i in weakTypes){
     weakTypesString=weakTypesString+weakTypes[i];
 
   }
-  let strongTypes=[...pokemon[2].damage_relations.double_damage_from.map((type)=>{
-    return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
-}),...pokemon[2].damage_relations.no_damage_to.map((type)=>{
+  let strongTypes=[...pokemon[2].damage_relations.double_damage_to.map((type)=>{
   return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
 })]
 var strongTypesString='';
