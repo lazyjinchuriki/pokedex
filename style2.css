@@ -320,7 +320,6 @@
     display: flex;
     justify-content: space-between;
 }
-
 .stats meter{
     width: 60%;
     height: 1.5em;
@@ -344,34 +343,6 @@ meter::-webkit-meter-even-less-good-value{
     background-color: rgba(183, 183, 183, 0.3);
     border: none;
 }
-.statTypes{
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 1%;
-}
-.statTypes .statTypeText{
-    
-  
-    width: 35%;
-    margin-bottom: 1%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-.statTypes img{
-    height: 35px;
-    border-radius: 15px; 
-    margin: 10px;
-}
-.statTypes .statIconHolder{
-    font-size: 14px;
-}
-
 
 .poke__type__bg img {
     width: 20px;
@@ -678,9 +649,4 @@ meter::-webkit-meter-even-less-good-value{
     visibility: hidden;
     transform:translateY(-100%);
     transition: all .3s 1s ease-out;
-  }
-  .statIconHolder{
-
-    
-
   }
