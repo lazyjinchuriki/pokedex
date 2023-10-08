@@ -369,6 +369,29 @@ a {
   box-shadow: 0 0 20px var(--fire);
 }
 
+/* Filter Section Styles */
+#type-filter {
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+}
+
+.filter-section label {
+  font-size: 1em;
+  margin-left: 10px;
+  color: #333;
+  /* You can add more styles as needed */
+}
+
+#type-filter option {
+  background-color: #fff;
+  color: #333;
+}
+
 .select-wrapper {
   overflow: hidden;
   max-width: 95%;
