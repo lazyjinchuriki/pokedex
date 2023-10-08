@@ -78,7 +78,7 @@ h1 {
   align-items: center;
   text-align: center;
   transform-style: preserve-3d;
-  transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in;
   max-width: 210px;
   min-width: 210px;
   min-height: 330px;
@@ -99,6 +99,7 @@ h1 {
   transform: rotateY(180deg);
   cursor: pointer;
   transition: 0.25s ease-in-out;
+  transition-delay: .2s;
 }
 
 .types {
