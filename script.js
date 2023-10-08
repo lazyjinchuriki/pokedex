@@ -187,7 +187,7 @@ const createPokemonCard = (pokemon) => {
   const pokemonElHolder = document.createElement("div");
   pokemonElHolder.classList.add("cardContainer");
   pokemonElHolder.appendChild(pokemonEl);
-  
+
   poke_container.appendChild(pokemonElHolder);
 };
 
@@ -248,7 +248,7 @@ function search_pokemon() {
   input = input.toLowerCase();
   input = input.replace(/\s+/g, ""); // removing all spaces from search box
   // storing all card along wiith details in variable
-  let x = document.getElementsByClassName("card");
+  let x = document.getElementsByClassName("cardContainer");
 
   for (i = 0; i < x.length; i++) {
     // checking  the name or type entered by user from search box if doesn't match than dont display the message
