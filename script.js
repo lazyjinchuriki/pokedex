@@ -90,20 +90,6 @@ const getPokemon = async (id) => {
 
 const main_types = Object.keys(colors);
 
-// const fetchPokemons = async () => {
-//   for (let i = 1; i <= pokemon_count; i++) {
-//     await getPokemon(i);
-//   }
-// };
-
-// const getPokemon = async (id) => {
-//   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-//   const res = await fetch(url);
-//   const data = await res.json();
-//   console.log(data);
-//   createPokemonCard(data);
-// };
-
 const createPokemonCard = (pokemon) => {
   const pokemonEl = document.createElement("div");
   pokemonEl.classList.add("card");
@@ -116,15 +102,6 @@ const createPokemonCard = (pokemon) => {
     name = name;
   }
   const id = pokemon.id.toString().padStart(3, "0");
-  //    const moves = [];
-  //    try {
-  //     for (let i = 0; i <= 1 ; i++) {
-  //             moves.push(pokemon.moves[i].move.name);
-  //     }
-  //     console.log(moves);
-  //     } catch (error) {
-  //         console.log(error);
-  //     }
 
   let weight = pokemon.weight / 10 + "kg";
   let height = pokemon.height / 10 + "m";
@@ -171,11 +148,6 @@ const createPokemonCard = (pokemon) => {
     </div>
     </div>
     `;
-
-  // <div class="moves">
-  // <div>${moves[0]}</div>
-  // <div>${moves[1]}</div>
-  // </div>
 
   pokemonEl.innerHTML = pokemonInnerHTML;
   // Add event listener to open new page on card click
