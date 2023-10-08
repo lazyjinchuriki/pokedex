@@ -184,7 +184,11 @@ const createPokemonCard = (pokemon) => {
     window.open(`details.html?id=${id}`, "_self");
   });
 
-  poke_container.appendChild(pokemonEl);
+  const pokemonElHolder = document.createElement("div");
+  pokemonElHolder.classList.add("cardContainer");
+  pokemonElHolder.appendChild(pokemonEl);
+  
+  poke_container.appendChild(pokemonElHolder);
 };
 
 const changeRegion = () => {
