@@ -295,33 +295,28 @@ for(let i in strongTypes){
   </div>
     <div class="statTypes">
       <div class="statTypeText">
-        <span>
-          Weak Against:
-        </span>
-        <span>
-        ${weakTypes.length}
-      </span>
+        <div>
+          Weak Against
+        </div>
+        
       </div>
       
         <div class="statIconHolder">
-          ${weakTypesString}
+          ${weakTypesString==""?'None':weakTypesString}
           
        </div> 
     </div>
     <div class="statTypes">
-    <div class="statTypeText">
-      <span>
-        Strong Against:
-      </span>
-      <span>
-        ${strongTypes.length}
-      </span>
-    </div>
+      <div class="statTypeText">
+        <span>
+          Strong Against
+        </span>
+      </div>
     
       <div class="statIconHolder">
-       ${strongTypesString}
+       ${strongTypesString==""?'None':strongTypesString}
      </div>
-
+    </div>
   `;
   let pokemonDetailsEl = document.getElementById("pokemon-details");
   pokemonDetailsEl.innerHTML = `

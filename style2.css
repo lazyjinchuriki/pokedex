@@ -345,29 +345,31 @@ meter::-webkit-meter-even-less-good-value{
     border: none;
 }
 .statTypes{
-    width: 100%;
-    display: flex;
     
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
 }
 .statTypes .statTypeText{
-    text-align: left;
-    margin-top: 5px;
+    
+  
     width: 35%;
-    padding: 7px;
+    margin-bottom: 1%;
     display: flex;
-    justify-content: space-between;
-    margin-left: 14px;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .statTypes img{
-    height: 30px;
-    border-radius: 20px; 
+    height: 35px;
+    border-radius: 15px; 
     margin: 10px;
 }
 .statTypes .statIconHolder{
-    
-    
-    margin-left: 3%;
+    font-size: 14px;
 }
 
 
@@ -676,4 +678,9 @@ meter::-webkit-meter-even-less-good-value{
     visibility: hidden;
     transform:translateY(-100%);
     transition: all .3s 1s ease-out;
+  }
+  .statIconHolder{
+
+    
+
   }
