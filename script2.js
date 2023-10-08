@@ -25,7 +25,7 @@ const main_types = Object.keys(colors);
 const fetchPokemonDetails = async () => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const url2 = `https://pokeapi.co/api/v2/pokemon-species/${id}`;
-  const url3 = `https://pokeapi.co/api/v2/type/`;
+  const url3 = `https://pokeapi.co/api/v2/type/${id}`; //changing the api so that the query is pokemon specific
   const res = await fetch(url);
   const res2 = await fetch(url2);
   const res3 = await fetch(url3);
@@ -180,6 +180,22 @@ const displayPokemonDetails = async (pokemon) => {
     return parts[parts.length - 2];
   }
   displayEvolutionChain(evolutionChainData);
+  let weakTypes=[...pokemon[2].damage_relations.no_damage_to.map((type)=>{
+      return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
+  })]
+  var weakTypesString='';
+  for(let i in weakTypes){
+    weakTypesString=weakTypesString+weakTypes[i];
+
+  }
+  let strongTypes=[...pokemon[2].damage_relations.double_damage_to.map((type)=>{
+  return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
+})]
+var strongTypesString='';
+for(let i in strongTypes){
+  strongTypesString=strongTypesString+strongTypes[i];
+
+}
 
   let tab2 = document.getElementById("tab_2");
   tab2.innerHTML = `
@@ -265,7 +281,7 @@ const displayPokemonDetails = async (pokemon) => {
   </meter>
   </div>
 
-
+                            
       <div class="stat">
       <div>
   <span> Total:</span>
@@ -277,8 +293,30 @@ const displayPokemonDetails = async (pokemon) => {
         value="${speed + hp + attack + defense + spAttack + spDefense}">
   </meter>
   </div>
-
-
+    <div class="statTypes">
+      <div class="statTypeText">
+        <div>
+          Weak Against
+        </div>
+        
+      </div>
+      
+        <div class="statIconHolder">
+          ${weakTypesString==""?'None':weakTypesString}
+          
+       </div> 
+    </div>
+    <div class="statTypes">
+      <div class="statTypeText">
+        <span>
+          Strong Against
+        </span>
+      </div>
+    
+      <div class="statIconHolder">
+       ${strongTypesString==""?'None':strongTypesString}
+     </div>
+    </div>
   `;
   let pokemonDetailsEl = document.getElementById("pokemon-details");
   pokemonDetailsEl.innerHTML = `
