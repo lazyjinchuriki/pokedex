@@ -77,6 +77,7 @@ const getPokemon = async (id) => {
 
   let res = await fetch(url);
   let data = await res.json();
+  loader.classList.remove('ring-active')
   createPokemonCard(data);
 };
 
