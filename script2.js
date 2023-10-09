@@ -48,52 +48,34 @@ const main_types = Object.keys(colors);
 //         console.error('There was an error!', error);
 //     });
 // }
-
+const getType_data = async(url)=>{
+  let res = await fetch(url);
+  let data = await res.json();
+  return data;
+}
 const fetchPokemonDetails = async () => {
 
 
   const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
   const url2 = `https://pokeapi.co/api/v2/pokemon-species/${id}/`;
   //changing the api so that the query is pokemon specific
-  const url3 = `https://pokeapi.co/api/v2/type/${id}/`; 
+  // const url3 = `https://pokeapi.co/api/v2/type/${id}/`; 
  
   const res = await fetch(url);
   const res2 = await fetch(url2);
   
-  
-  let data3;
-  let res3;
-
-  res3 = async () =>{
-    await fetch(url3)
-    .then(async (response)=>{
-      let isJson = response.headers.get('content-type')?.includes('application/json');
-      let data = isJson ? await response.json() : null;
-      // console.log(isJson, data);
-      if(response.ok){
-        return data;
-      }
-    })
-    .catch((err)=>{
-      obj={
-        message: "Not Found",
-        error: err
-      }
-      return obj
-    })
-  }
-  res3 = await res3()
-  if(res3 != undefined){
-    data3 = res3;
-  }
-  else{
-    data3 = null;
-  }
-  
-  
-
   const data = await res.json();
   const data2 = await res2.json();
+  
+  
+  // get the type of pokemon
+  let type_names = data.types.map((val, index)=>val.type.name)
+  // console.log(data.types);
+  let data3 = type_names.map( async (val) => {
+    return await getType_data(`https://pokeapi.co/api/v2/type/${val}/`)
+  })
+  
+  // console.log(type_names);
   
   const arr = [data, data2, data3];
   await displayPokemonDetails(arr);
@@ -254,145 +236,307 @@ const displayPokemonDetails = async (pokemon) => {
   displayEvolutionChain(evolutionChainData);
 
   if(pokemon[2] != null){
-    let weakTypes=[...pokemon[2].damage_relations.no_damage_to.map((type)=>{
-        return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
-    })]
-  
-    var weakTypesString='';
-    for(let i in weakTypes){
-      weakTypesString=weakTypesString+weakTypes[i];
-  
-    }
-  
-    let strongTypes=[...pokemon[2].damage_relations.double_damage_to.map((type)=>{
-      return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
-    })]
-    var strongTypesString='';
-    for(let i in strongTypes){
-      strongTypesString=strongTypesString+strongTypes[i];
-    }
 
-    let tab2 = document.getElementById("tab_2");
-    tab2.innerHTML = `
-    <div class="stats">
-    <div class="stat">
-    <div>
-    <span> Health:</span>
-    <span>${hp}</span>
-    </div>
-      <meter id="hp"
-      style="content: 'HP';"
-         min="0" max="255"
-         low="70" high="120" optimum="150"
-         value="${hp}">
-    </meter>
-    </div>
-  
-  
-      <div class="stat">
-      <div>
-    <span> Attack:</span>
-    <span>${attack}</span>
-    </div>
-      <meter id="attack"
-          min="0" max="255"
-          low="70" high="120" optimum="150"
-          value="${attack}">
-    </meter>
-    </div>
-  
-  
-  
-      <div class="stat">
-      <div>
-    <span> Defense:</span>
-    <span>${defense}</span>
-    </div>
-      <meter id="defense"
-          min="0" max="255"
-          low="70" high="120" optimum="150"
-          value="${defense}">
-    </meter>
-    </div>
-  
-  
-  
-        <div class="stat">
-      <div>
-    <span> Sp. Atk:</span>
-    <span>${spAttack}</span>
-    </div>
-      <meter id="spattack"
-          min="0" max="255"
-          low="70" high="120" optimum="150"
-          value="${spAttack}">
-    </meter>
-    </div>
-  
-  
-        <div class="stat">
-      <div>
-    <span> Sp. Def:</span>
-    <span>${spDefense}</span>
-    </div>
-      <meter id="spdefense"
-          min="0" max="255"
-          low="70" high="120" optimum="150"
-          value="${spDefense}">
-    </meter>
-    </div>
-  
-  
-  
-      <div class="stat">
-      <div>
-    <span>Speed:</span>
-    <span>${speed}</span>
-    </div>
-      <meter id="speed"
-          min="0" max="255"
-          low="70" high="120" optimum="150"
-          value="${speed}">
-    </meter>
-    </div>
-  
-                              
+    var weakTypesString='';
+    var strongTypesString='';
+    
+    pokemon[2].map(async (val)=>{
+
+      val.then((res)=>{
+        // console.log(res);
+
+        let weakTypes=[res.damage_relations.no_damage_to.map((type)=>{
+          return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
+        })]
+
+        // var weakTypesString='';
+        for(let i in weakTypes){
+          weakTypesString += weakTypes[i];
+        }
+        
+        let strongTypes=[res.damage_relations.double_damage_to.map((type)=>{
+          return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
+        })]
+        
+        // var strongTypesString='';
+        for(let i in strongTypes){
+          strongTypesString += strongTypes[i];
+        }
+    
+        let tab2 = document.getElementById("tab_2");
+        tab2.innerHTML = `
+        <div class="stats">
         <div class="stat">
         <div>
-    <span> Total:</span>
-    <span>${speed + hp + attack + defense + spAttack + spDefense}</span>
-    </div>
-      <meter id="total"
-          min="0" max="1530"
-          low="500" high="720" optimum="1000"
-          value="${speed + hp + attack + defense + spAttack + spDefense}">
-    </meter>
-    </div>
-      <div class="statTypes">
-        <div class="statTypeText">
-          <div>
-            Weak Against
-          </div>
-          
+        <span> Health:</span>
+        <span>${hp}</span>
         </div>
-        
-          <div class="statIconHolder">
-            ${weakTypesString==""?'None':weakTypesString}
-            
-         </div> 
-      </div>
-      <div class="statTypes">
-        <div class="statTypeText">
-          <span>
-            Strong Against
-          </span>
+          <meter id="hp"
+          style="content: 'HP';"
+            min="0" max="255"
+            low="70" high="120" optimum="150"
+            value="${hp}">
+        </meter>
         </div>
       
-        <div class="statIconHolder">
-         ${strongTypesString==""?'None':strongTypesString}
-       </div>
-      </div>
-    `;
+      
+          <div class="stat">
+          <div>
+        <span> Attack:</span>
+        <span>${attack}</span>
+        </div>
+          <meter id="attack"
+              min="0" max="255"
+              low="70" high="120" optimum="150"
+              value="${attack}">
+        </meter>
+        </div>
+      
+      
+      
+          <div class="stat">
+          <div>
+        <span> Defense:</span>
+        <span>${defense}</span>
+        </div>
+          <meter id="defense"
+              min="0" max="255"
+              low="70" high="120" optimum="150"
+              value="${defense}">
+        </meter>
+        </div>
+      
+      
+      
+            <div class="stat">
+          <div>
+        <span> Sp. Atk:</span>
+        <span>${spAttack}</span>
+        </div>
+          <meter id="spattack"
+              min="0" max="255"
+              low="70" high="120" optimum="150"
+              value="${spAttack}">
+        </meter>
+        </div>
+      
+      
+            <div class="stat">
+          <div>
+        <span> Sp. Def:</span>
+        <span>${spDefense}</span>
+        </div>
+          <meter id="spdefense"
+              min="0" max="255"
+              low="70" high="120" optimum="150"
+              value="${spDefense}">
+        </meter>
+        </div>
+      
+      
+      
+          <div class="stat">
+          <div>
+        <span>Speed:</span>
+        <span>${speed}</span>
+        </div>
+          <meter id="speed"
+              min="0" max="255"
+              low="70" high="120" optimum="150"
+              value="${speed}">
+        </meter>
+        </div>
+      
+                                  
+            <div class="stat">
+            <div>
+        <span> Total:</span>
+        <span>${speed + hp + attack + defense + spAttack + spDefense}</span>
+        </div>
+          <meter id="total"
+              min="0" max="1530"
+              low="500" high="720" optimum="1000"
+              value="${speed + hp + attack + defense + spAttack + spDefense}">
+        </meter>
+        </div>
+          <div class="statTypes">
+            <div class="statTypeText">
+              <div>
+                Weak Against
+              </div>
+              
+            </div>
+            
+              <div class="statIconHolder">
+                ${weakTypesString==""?'None':weakTypesString}
+                
+            </div> 
+          </div>
+          <div class="statTypes">
+            <div class="statTypeText">
+              <span>
+                Strong Against
+              </span>
+            </div>
+          
+            <div class="statIconHolder">
+            ${strongTypesString==""?'None':strongTypesString}
+          </div>
+          </div>
+        `;
+
+      })
+      
+    })
+
+    
+    // let weakTypes=[...pokemon[2].damage_relations.no_damage_to.map((type)=>{
+    //     return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
+    // })]
+  
+    // var weakTypesString='';
+    // for(let i in weakTypes){
+    //   weakTypesString=weakTypesString+weakTypes[i];
+  
+    // }
+  
+    // let strongTypes=[...pokemon[2].damage_relations.double_damage_to.map((type)=>{
+    //   return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
+    // })]
+
+    // var strongTypesString='';
+    // for(let i in strongTypes){
+    //   strongTypesString=strongTypesString+strongTypes[i];
+    // }
+
+    // let tab2 = document.getElementById("tab_2");
+    // tab2.innerHTML = `
+    // <div class="stats">
+    // <div class="stat">
+    // <div>
+    // <span> Health:</span>
+    // <span>${hp}</span>
+    // </div>
+    //   <meter id="hp"
+    //   style="content: 'HP';"
+    //      min="0" max="255"
+    //      low="70" high="120" optimum="150"
+    //      value="${hp}">
+    // </meter>
+    // </div>
+  
+  
+    //   <div class="stat">
+    //   <div>
+    // <span> Attack:</span>
+    // <span>${attack}</span>
+    // </div>
+    //   <meter id="attack"
+    //       min="0" max="255"
+    //       low="70" high="120" optimum="150"
+    //       value="${attack}">
+    // </meter>
+    // </div>
+  
+  
+  
+    //   <div class="stat">
+    //   <div>
+    // <span> Defense:</span>
+    // <span>${defense}</span>
+    // </div>
+    //   <meter id="defense"
+    //       min="0" max="255"
+    //       low="70" high="120" optimum="150"
+    //       value="${defense}">
+    // </meter>
+    // </div>
+  
+  
+  
+    //     <div class="stat">
+    //   <div>
+    // <span> Sp. Atk:</span>
+    // <span>${spAttack}</span>
+    // </div>
+    //   <meter id="spattack"
+    //       min="0" max="255"
+    //       low="70" high="120" optimum="150"
+    //       value="${spAttack}">
+    // </meter>
+    // </div>
+  
+  
+    //     <div class="stat">
+    //   <div>
+    // <span> Sp. Def:</span>
+    // <span>${spDefense}</span>
+    // </div>
+    //   <meter id="spdefense"
+    //       min="0" max="255"
+    //       low="70" high="120" optimum="150"
+    //       value="${spDefense}">
+    // </meter>
+    // </div>
+  
+  
+  
+    //   <div class="stat">
+    //   <div>
+    // <span>Speed:</span>
+    // <span>${speed}</span>
+    // </div>
+    //   <meter id="speed"
+    //       min="0" max="255"
+    //       low="70" high="120" optimum="150"
+    //       value="${speed}">
+    // </meter>
+    // </div>
+  
+                              
+    //     <div class="stat">
+    //     <div>
+    // <span> Total:</span>
+    // <span>${speed + hp + attack + defense + spAttack + spDefense}</span>
+    // </div>
+    //   <meter id="total"
+    //       min="0" max="1530"
+    //       low="500" high="720" optimum="1000"
+    //       value="${speed + hp + attack + defense + spAttack + spDefense}">
+    // </meter>
+    // </div>
+    //   <div class="statTypes">
+    //     <div class="statTypeText">
+    //       <div>
+    //         Weak Against
+    //       </div>
+          
+    //     </div>
+        
+    //       <div class="statIconHolder">
+    //         ${weakTypesString==""?'None':weakTypesString}
+            
+    //      </div> 
+    //   </div>
+    //   <div class="statTypes">
+    //     <div class="statTypeText">
+    //       <span>
+    //         Strong Against
+    //       </span>
+    //     </div>
+      
+    //     <div class="statIconHolder">
+    //      ${strongTypesString==""?'None':strongTypesString}
+    //    </div>
+    //   </div>
+    // `;
+
+
+
+
+  }
+  else{
+    console.log(pokemon[2])
   }
 
 
