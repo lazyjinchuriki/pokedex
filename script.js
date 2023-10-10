@@ -63,20 +63,21 @@ const regions = {
   },
 };
 
+const loader = document.querySelector(".lds-ring");
 const fetchPokemons = async (region) => {
   const { start, end } = regions[region];
   for (let i = start; i <= end; i++) {
     const pokemonName = i.toString();
-
     getPokemon(pokemonName);
   }
 };
 const getPokemon = async (id) => {
+  loader.classList.add("ring-active");
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
 
-  const res = await fetch(url);
-  const data = await res.json();
-  console.log(data);
+  let res = await fetch(url);
+  let data = await res.json();
+  loader.classList.remove('ring-active')
   createPokemonCard(data);
 };
 
@@ -97,6 +98,7 @@ const main_types = Object.keys(colors);
 // };
 
 const createPokemonCard = (pokemon) => {
+
   const pokemonEl = document.createElement("div");
   pokemonEl.classList.add("card");
   pokemonEl.id = pokemon.id;
@@ -124,8 +126,16 @@ const createPokemonCard = (pokemon) => {
   const poke_types = pokemon.types.map((type) => type.type.name);
   const type = main_types.find((type) => poke_types.indexOf(type) > -1);
   const color = colors[type];
-  const frontImg = pokemon.sprites.front_default;
-  const backImg = pokemon.sprites.back_default;
+  let frontImg;
+  let backImg;
+  try{
+    frontImg = pokemon.sprites.front_default;
+    backImg = pokemon.sprites.back_default;
+  }
+  catch(err){
+    frontImg = "#";
+    backImg = "#";
+  }
 
   pokemonEl.style.backgroundColor = color;
 
@@ -162,7 +172,7 @@ const createPokemonCard = (pokemon) => {
     <div> Height:<br> <b>${height}</b></div>
     </div>
     </div>
-    `;
+  `;
 
   // <div class="moves">
   // <div>${moves[0]}</div>
@@ -176,7 +186,11 @@ const createPokemonCard = (pokemon) => {
     window.open(`details.html?id=${id}`, "_self");
   });
 
-  poke_container.appendChild(pokemonEl);
+  const pokemonElHolder = document.createElement("div");
+  pokemonElHolder.classList.add("cardContainer");
+  pokemonElHolder.appendChild(pokemonEl);
+
+  poke_container.appendChild(pokemonElHolder);
 };
 
 const changeRegion = () => {
@@ -236,7 +250,7 @@ function search_pokemon() {
   input = input.toLowerCase();
   input = input.replace(/\s+/g, ""); // removing all spaces from search box
   // storing all card along wiith details in variable
-  let x = document.getElementsByClassName("card");
+  let x = document.getElementsByClassName("cardContainer");
 
   for (i = 0; i < x.length; i++) {
     // checking  the name or type entered by user from search box if doesn't match than dont display the message
