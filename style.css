@@ -216,10 +216,20 @@ h1 {
   cursor: pointer;
   border-radius: 50%;
 }
+#searchbar{
+  border-radius: 15px;
+  color: black;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border: 2px solid rgb(70, 12, 12);
+}
+::placeholder{
+  font-weight: 400;
+  color: #1c2d1b;
+}
 #searchbar:hover{
-  color: rgb(31, 31, 25);
-border: 2px solid rgb(20, 19, 21);
- background-color: #eceaf5;
+  color: rgb(28, 28, 18);
+
+ background-color: #f1eeee;
 
 }
 
@@ -399,6 +409,7 @@ font-size: 1.8em;
       -ms-overflow-style: none;
       scrollbar-width: none;
       scroll-behavior: smooth;
+      
 }
 #regionSelect::-webkit-scrollbar {
   display: none;
@@ -409,14 +420,18 @@ font-size: 1.8em;
 
 #regionSelect span{
   background-color: rgba(46, 46, 46, 0.1);
+
   padding: 5px 15px;
   border-radius: 10px;
-  border: none;
+  border: 2px solid #202020;
   outline: none;
   cursor: pointer;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 #regionSelect span:hover{
-  border: 2px solid #202020;
+ 
+  
+ background-color: #f9f8f8;
 
 }
 
