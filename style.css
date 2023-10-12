@@ -189,6 +189,47 @@ h1 {
   letter-spacing: 2px;
 }
 
+.select-wrapper .region  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  
+}
+
+.nav.github,
+a:hover {
+  color: #310d15;
+  font-size: 1.8em;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  z-index: 100;
+}
+
+.header .logo img {
+  border-radius: 50%;
+  width: 50px;
+  cursor: pointer;
+}
+
+.nav .github,
+a {
+  color: #202020;
+  font-size: 1.5em;
+  width: 10%;
+}
+
 #scrollToTopBtn {
   width: 40px;
   height: 40px;
@@ -236,34 +277,8 @@ h1 {
  background-color: #f1eeee;
 
 
-
-.nav.github,
-a:hover {
-  color: #310d15;
-  font-size: 1.8em;
 }
 
-.nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: auto;
-  width: 100%;
-  margin-top: 15px;
-  margin-bottom: 20px;
-  z-index: 100;
-}
-.logo img {
-  border-radius: 50%;
-  width: 50px;
-  cursor: pointer;
-}
-.nav .github,
-a {
-  color: #202020;
-  font-size: 1.5em;
-  width: 10%;
-}
 
 .box input {
   width: 100%;
@@ -278,6 +293,7 @@ a {
   font-family: "slumbersWeight", sans-serif;
   text-align: center;
 }
+
 .box input:focus {
   border: 2px solid #202020;
 }
@@ -415,8 +431,7 @@ a {
       -ms-overflow-style: none;
       scrollbar-width: none;
       scroll-behavior: smooth;
-      
-
+}
 
 #regionSelect::-webkit-scrollbar {
   display: none;
