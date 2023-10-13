@@ -220,6 +220,7 @@ a:hover {
 .header .logo img {
   border-radius: 50%;
   width: 50px;
+  height: 50px;
   cursor: pointer;
 }
 
@@ -265,16 +266,16 @@ a {
   border-radius: 15px;
   color: black;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  border: 2px solid rgb(70, 12, 12);
+  border: 2px solid rgb(32, 32, 32);
 }
 ::placeholder{
   font-weight: 400;
-  color: #1c2d1b;
+  color: #121212;
 }
 #searchbar:hover{
   color: rgb(28, 28, 18);
 
- background-color: #f1eeee;
+ background-color:#f1eeee;
 
 
 }
@@ -518,4 +519,20 @@ a {
 
 .ring-active {
   display: block;
+}
+/* dark mode enabled */
+.darkmode{
+  position: fixed;
+  right: 1%;
+  top: 7.5%;
+  z-index: 999;
+  font-size: 1.8em;
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  cursor: pointer;
+}
+.dark-mode{ 
+  background-color: rgb(56, 56, 56);
+  color: rgb(2,2,5);
 }
