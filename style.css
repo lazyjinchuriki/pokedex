@@ -522,14 +522,12 @@ a {
 }
 /* dark mode enabled */
 .darkmode{
-  position: fixed;
-  right: 1%;
-  top: 7.5%;
+  position: relative;
+  left: 15%; 
   z-index: 999;
   font-size: 1.8em;
   display: flex;
-  align-items: right;
-  justify-content: right;
+
   cursor: pointer;
 }
 .dark-mode{ 
