@@ -282,7 +282,8 @@ darkModeButton.addEventListener("click", () => {
 
 });
 
-  darkModeButton.addEventListener("click", () => {
+const darkModeIcon = document.getElementById("dark");
+darkModeButton.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
   darkModeIcon.classList.toggle("fa-toggle-on");
   // You can add additional elements that need dark mode here
