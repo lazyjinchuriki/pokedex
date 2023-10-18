@@ -203,7 +203,8 @@ h1 {
 .nav.github,
 a:hover {
   color: #310d15;
-  font-size: 1.8em;
+  transform: scale(1.2);
+  transition: color 0.2s, transform 0.2s;
 }
 
 .header {
@@ -223,6 +224,15 @@ a:hover {
   width: 50px;
   height: 50px;
   cursor: pointer;
+}
+
+.logo {
+  display: inline-block;
+  transition: transform 0.6s;
+}
+
+.logo:hover {
+  transform: rotate(360deg); 
 }
 
 .nav .github,
@@ -526,8 +536,13 @@ a {
 
 .features{
   display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
+#dark:hover {
+  cursor: pointer;
+}
 
 .darkmode-container{
   margin-right: 2.5em;
@@ -542,17 +557,17 @@ a {
   display: flex;
 }
 
-.darkmode-button-icon{
-  cursor: pointer;
-  margin-top: 0.1em;
-}
 
 .darkmode-text{
   margin-right: 0.3em;
 }
 
-.github{
-  margin-top: 0.15em;
+.github {
+  min-height: 2rem;
+  min-width: 2rem;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
 }
 
 .dark-mode {
