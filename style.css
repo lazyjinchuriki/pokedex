@@ -189,7 +189,7 @@ h1 {
   letter-spacing: 2px;
 }
 
-.select-wrapper .region  {
+.select-wrapper .regions  {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -210,11 +210,12 @@ a:hover {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: auto;
+  height: 5em;
   width: 100%;
   margin-top: 15px;
   margin-bottom: 20px;
   z-index: 100;
+  background-color: #e0e0e0;
 }
 
 .header .logo img {
@@ -280,6 +281,10 @@ a {
 
 }
 
+.box{
+  position: fixed;
+  left: 50;
+}
 
 .box input {
   width: 100%;
@@ -452,16 +457,13 @@ a {
   cursor: pointer;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
-#regionSelect span:hover{
- 
-  
- background-color: #f9f8f8;
 
+#regionSelect span:hover{
+  background-color: #bbbbbb;
   outline: none;
   cursor: pointer;
   transition: border-color 0.25s ease-in-out;
 }
-
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -520,17 +522,68 @@ a {
 .ring-active {
   display: block;
 }
-/* dark mode enabled */
-.darkmode{
+
+
+.features{
+  display: flex;
+}
+
+
+.darkmode-container{
+  margin-right: 2.5em;
+}
+
+.darkmode-content{
   position: relative;
   left: 15%; 
   z-index: 999;
-  font-size: 1.8em;
+  font-size: 1.5em;
+  font-family: pocketMonk;
   display: flex;
-
-  cursor: pointer;
 }
-.dark-mode{ 
-  background-color: rgb(56, 56, 56);
-  color: rgb(2,2,5);
+
+.darkmode-button-icon{
+  cursor: pointer;
+  margin-top: 0.1em;
+}
+
+.darkmode-text{
+  margin-right: 0.3em;
+}
+
+.github{
+  margin-top: 0.15em;
+}
+
+.dark-mode {
+  background-color: #333; 
+  color: #fff;
+}
+.dark-mode .header {
+  background-color: #222; 
+  color: #fff; 
+}
+.dark-mode .darkmode-button-icon {
+  color: #fff;
+}
+
+.dark-mode .github-icon {
+  color: #fff;
+}
+
+.dark-mode .box input {
+  background-color: #787878; 
+  color: #ab0101; 
+}
+
+.dark-mode #regionSelect span {
+  border: 1px solid #ccc; 
+}
+
+.dark-mode #regionSelect span:hover{
+  color: black;
+  background-color: #ead51d;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.25s ease-in-out;
 }

@@ -14,9 +14,11 @@
   <body>
     <div id="page">
       <div class="header">
+
         <div class="logo">
           <img class="img" src="./Icons/default/pokeball.png" alt="logo" />
         </div>
+
         <div class="box">
           <input
             id="searchbar"
@@ -25,30 +27,37 @@
             placeholder="Search"
           />
         </div>
-        <div class="github">
-          <a href="https://github.com/lazyjinchuriki/pokedex" target="_blank"
-            ><i class="fab fa-github"></i
-          ></a>
+
+        <div class="features">
+          <div class="darkmode-container">
+              <div class="darkmode-content">
+                <span class="darkmode-text">Dark Mode</span>
+                <i class="fa-solid fa-toggle-off darkmode-button-icon" id="dark"></i>
+              </div>
+          </div>
+          
+          <div class="github">
+              <a href="https://github.com/lazyjinchuriki/pokedex" target="_blank"
+                ><i class="github-icon fab fa-github"></i
+              ></a>
+          </div>
         </div>
-      </div>
+
+        </div>
+
       <div class="select-wrapper">
-        <div class="region" id="regionSelect">
-          <span data-value="kanto" class="active">Kanto</span>
-          <span data-value="johto">Johto</span>
-          <span data-value="hoenn">Hoenn</span>
-          <span data-value="sinnoh">Sinnoh</span>
-          <span data-value="unova">Unova</span>
-          <span data-value="kalos">Kalos</span>
-          <span data-value="alola">Alola</span>
-          <span data-value="galar">Galar</span>
-          <span data-value="hisui">Hisui</span>
-          <span data-value="paldea">Paldea</span>
+        <div class="regions" id="regionSelect">
+          <span data-value="kanto" class="active regionvalue">Kanto</span>
+          <span data-value="johto" class="regionvalue">Johto</span>
+          <span data-value="hoenn" class="regionvalue">Hoenn</span>
+          <span data-value="sinnoh" class="regionvalue">Sinnoh</span>
+          <span data-value="unova" class="regionvalue">Unova</span>
+          <span data-value="kalos" class="regionvalue">Kalos</span>
+          <span data-value="alola" class="regionvalue">Alola</span>
+          <span data-value="galar" class="regionvalue">Galar</span>
+          <span data-value="hisui" class="regionvalue">Hisui</span>
+          <span data-value="paldea" class="regionvalue">Paldea</span>
         </div> 
-      </div>
-      <div class="select-wrapper1">
-        <div class="darkmode" id="dark">
-          <i class="fa-solid fa-toggle-off" id="dark-icon"></i>
-        </div>
       </div>
 
       <div class="poke-container" id="poke-container"></div>
