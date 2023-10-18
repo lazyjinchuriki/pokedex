@@ -263,19 +263,31 @@ function search_pokemon() {
     }
   }
 }
+
+
 // dark mode enabled
 const darkModeButton = document.getElementById("dark");
 
 darkModeButton.addEventListener("click", () => {
+
   let element = document.body;
   element.classList.toggle("dark-mode");
   document.body.classList.toggle("dark-mode");
-  // You can add additional elements that need dark mode here
+
+  const regions = document.querySelectorAll(".regionvalue");
+  console.log(regions);
+  regions.forEach(region => {
+    region.classList.toggle("dark-mode");
+  });
+
 });
-const darkModeIcon = document.getElementById("dark-icon");
+
+const darkModeIcon = document.getElementById("dark");
 darkModeButton.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
   darkModeIcon.classList.toggle("fa-toggle-on");
   // You can add additional elements that need dark mode here
 });
+
+
 changeRegion();
