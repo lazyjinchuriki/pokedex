@@ -207,12 +207,13 @@ a:hover {
 }
 
 .header {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 5em;
   width: 100%;
-  margin-top: 15px;
   margin-bottom: 20px;
   z-index: 100;
   background-color: #e0e0e0;
@@ -221,7 +222,6 @@ a:hover {
 .header .logo img {
   border-radius: 50%;
   width: 50px;
-  height: 50px;
   cursor: pointer;
 }
 
@@ -283,7 +283,6 @@ a {
 
 .box{
   position: fixed;
-  left: 50;
 }
 
 .box input {
@@ -586,4 +585,33 @@ a {
   outline: none;
   cursor: pointer;
   transition: border-color 0.25s ease-in-out;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 924px) {
+  .header {
+    height: 6em;
+    padding-top: 35px;
+  }
+  .logo {
+    position: fixed;
+    left: 10px;
+  }
+
+  .features {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    top: 0;
+    width: 100%;
+    height: 25px;
+  }
+
+  .darkmode-content {
+    left: 0;
+  }
 }
