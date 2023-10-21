@@ -291,10 +291,6 @@ a {
 
 }
 
-.box{
-  position: fixed;
-}
-
 .box input {
   width: 100%;
   height: 50px;
@@ -593,7 +589,7 @@ a {
 .dark-mode #regionSelect span {
   border: 1px solid #ccc; 
 }
-
+relative
 .dark-mode #regionSelect span:hover{
   color: black;
   background-color: #ead51d;
@@ -609,7 +605,7 @@ a {
     padding-top: 35px;
   }
   .logo {
-    position: fixed;
+    position: absolute;
     left: 10px;
   }
 
