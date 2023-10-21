@@ -292,7 +292,7 @@ a {
 }
 
 #searchbar:focus::placeholder {
-  color: transparent;
+  opacity: 0.1;
 }
 
 .box input {
