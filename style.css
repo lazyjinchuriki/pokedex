@@ -102,6 +102,18 @@ h1 {
   transition-delay: .2s;
 }
 
+/* Handle card flip behavior on touch-screen */
+@media(hover: none) {
+  .cardContainer:hover .card {
+    transform: none;
+    transition: none;
+  }
+
+  .back {
+    visibility: hidden;
+  }
+}
+
 .types {
   display: flex;
 }
